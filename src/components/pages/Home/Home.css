@@ -1,0 +1,249 @@
+/* GENERAL */
+body {
+  background-color: #FAFAF9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* HEADER */
+.main-header {
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #FFF5E1;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  z-index: 1000;
+}
+
+.header-actions {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  gap: 1.2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.main-header .link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  padding: 0.5rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.main-header .link i {
+  margin-right: 0.5rem;
+}
+
+.main-header .link::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #E76F51;
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+  bottom: 0;
+  left: 0;
+}
+
+.main-header .link:hover::before {
+  transform: scaleX(1);
+}
+
+#hire-me {
+  background-color: #F4A261;
+  color: white;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease;
+}
+
+#hire-me:hover {
+ background-color: transparent;
+  color: #000000;
+}
+
+/* HERO */
+.tienda.button {
+  padding: 2rem;
+  text-align: center;
+  background-color: #FFF3E0;
+}
+
+.tienda.button h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.tienda.button button {
+  padding: 0.8rem 2rem;
+  background-color: #F4A261;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tienda.button button:hover {
+  background-color: #E76F51;
+}
+
+/* CAROUSEL */
+.carousel {
+  margin-top: 70px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+/* MAIN */
+.main-content {
+  padding: 3rem 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.main-wrapper {
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* SEARCH BAR */
+.search-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.search-bar h2 {
+  font-size: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.input-group input {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.input-group button {
+  padding: 0.8rem 1.5rem;
+  background-color: #F4A261;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.input-group button:hover {
+  background-color: #E76F51;
+}
+
+/* CATEGORIES */
+.categories {
+  background-color: #FFF9F0;
+  padding: 2rem;
+  text-align: center;
+}
+
+.categories h3 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.category-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.category-item {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.category-item:hover {
+  transform: translateY(-5px);
+}
+
+.category-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.category-item span {
+  display: block;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* FOOTER */
+.main-footer {
+  background: #FFF5E1;
+  padding: 1.5rem;
+  text-align: center;
+  color: #444;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+  margin-top: 3rem;
+}
+
+
+@media (max-width: 768px) {
+  .header-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .nav-left, .nav-right {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .main-header .link {
+    font-size: 14px;
+    padding: 0.4rem;
+  }
+
+  #hire-me {
+    padding: 0.4rem 0.8rem;
+    font-size: 14px;
+  }
+}
