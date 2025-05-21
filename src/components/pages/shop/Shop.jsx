@@ -29,13 +29,18 @@ const Shop = () => {
               </a>
             </li>
             <li>
-              <a href="#" className="link">
+              <a href="/addProducts" className="link">
                 <i className="fa-solid fa-info-circle"></i> Conocenos
               </a>
             </li>
             <li>
               <a href="/contact" className="link">
                 <i className="fa-solid fa-envelope"></i> Contactanos
+              </a>
+            </li>
+            <li>
+              <a href="/list" className="link">
+                <i className="fa-solid fa-envelope"></i> Pedidos
               </a>
             </li>
           </ul>

@@ -16,9 +16,9 @@ export default function Filters() {
           }
         >
           <option value="all">Todas</option>
-          <option value="alimento">Alimento</option>
-          <option value="juguetes">Juguetes</option>
-          <option value="accesorios">Accesorios</option>
+          <option value="BARRAS DE CEREAL">BARRAS DE CEREAL</option>
+          <option value="GRANOLA">GRANOLA</option>
+          <option value="BIENESTAR">BIENESTAR</option>
           <option value="descanso">Descanso</option>
           <option value="higiene">Higiene</option>
         </select>

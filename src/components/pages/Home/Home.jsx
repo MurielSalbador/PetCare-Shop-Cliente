@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useProducts } from "../../../../../granoMax-Api/src/hooks/useProducts.js";
+import { useProducts } from "../../../../../Mayorista-Api/src/hooks/useProducts.js";
 import { Products } from "../productsList/productsList.jsx";
 import { Link } from "react-router-dom";
 import "./Home.css";
@@ -37,13 +37,18 @@ export default function Home() {
               </a>
             </li>
             <li>
-              <a href="#" className="link">
+              <a href="/addProducts" className="link">
                 <i className="fa-solid fa-info-circle"></i> Conocenos
               </a>
             </li>
             <li>
               <a href="/contact" className="link">
                 <i className="fa-solid fa-envelope"></i> Contactanos
+              </a>
+            </li>
+            <li>
+              <a href="/list" className="link">
+                <i className="fa-solid fa-envelope"></i> Pedidos
               </a>
             </li>
           </ul>
