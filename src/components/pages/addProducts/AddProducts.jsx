@@ -41,7 +41,7 @@ function ProductForm({ productId, onSuccess }) {
 
     const payload = {
       ...formData,
-      price: Number(formData.price),
+      price: parseFloat(parseFloat(formData.price).toFixed(2)),
       stock: Number(formData.stock),
     };
 
@@ -83,7 +83,7 @@ function ProductForm({ productId, onSuccess }) {
       <input name="brand" value={formData.brand} onChange={handleChange} required />
 
       <label>Precio:</label>
-      <input name="price" type="number" value={formData.price} onChange={handleChange} required />
+      <input name="price" type="number" value={formData.price} onChange={handleChange} step="0.01" min="0" required />
 
       <label>Stock:</label>
       <input name="stock" type="number" value={formData.stock} onChange={handleChange} required />

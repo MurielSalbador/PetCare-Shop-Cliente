@@ -1,6 +1,6 @@
 import { useShallow } from "zustand/shallow";
-import { useCart } from "../../../store.js";
-import { useFilters } from "../../../hooks/useFilters.js";
+import { useCart } from "../../../../store.js";
+import { useFilters } from "../../../../hooks/useFilters.js";
 
 
 export default function Cart() {
@@ -13,7 +13,7 @@ export default function Cart() {
     }))
   );
 
-  const { filterProducts } = useFilters(); // ⬅️ Aplicamos los filtros al carrito
+  const { filterProducts } = useFilters(); // aplicamos los filtros al carrito
   const filteredCart = filterProducts(cart);
 
   const totalItems = filteredCart.reduce((sum, item) => sum + item.quantity, 0);

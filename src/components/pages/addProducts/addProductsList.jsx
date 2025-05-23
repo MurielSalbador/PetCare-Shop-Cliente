@@ -64,7 +64,7 @@ function ProductList() {
             <div>
               <h3>{product.title}</h3>
               <p><strong>Marca:</strong> {product.brand}</p>
-              <p><strong>Precio:</strong> ${product.price}</p>
+              <p><strong>Precio:</strong> ${Number(product.price).toLocaleString("es-AR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
               <p><strong>Stock:</strong> {product.stock}</p>
               <p><strong>Disponible:</strong> {product.available ? "Sí" : "No"}</p>
               {product.imageUrl && (

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useProducts } from "../../../../../Mayorista-Api/src/hooks/useProducts.js";
-import { Products } from "../productsList/productsList.jsx";
+import { useProducts } from "../../../../../Mayorista-Api/src/hooks/serch/useProducts.js";
+import { Products } from "../serch/productsList.jsx";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import Carousel from "react-bootstrap/Carousel";
@@ -11,6 +11,11 @@ export default function Home() {
     search,
     sort: false,
   });
+
+
+  //boton cerrar redirija a home cuando esta en home
+  localStorage.setItem("fromPage", "home"); // o "home"
+
 
   useEffect(() => {
     getProducts({ search });

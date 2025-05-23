@@ -1,7 +1,7 @@
 .finishCart {
   min-height: 100vh;
   background-color: #d4edda;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='105' viewBox='0 0 80 105'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='death-star' fill='%23e5f5ec' fill-opacity='0.48'%3E%3Cpath d='M20 10a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V10zm15 35a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zM20 75a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V75zm30-65a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V10zm0 65a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V75zM35 10a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10zM5 45a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zm0-35a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10zm60 35a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zm0-35a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("https://es.vecteezy.com/foto/8030262-whatsapp-logo-sobre-fondo-verde-3d-render" );
   background: linear-gradient(135deg, #e5f5ec, #d4edda);
   display: flex;
   align-items: center;
@@ -74,4 +74,69 @@
 .whatsappLogo {
   width: 50px;
   margin-bottom: 1rem;
+}
+
+.selected {
+  border: 2px solid green;
+  background-color: #e6ffe6;
+}
+.contactButton:hover {
+  transform: scale(1.05);
+  border-color: #25d366;
+}
+
+.contactButtonSelected {
+  border: 2px solid #25d366;
+  background-color: #e1fbe6;
+}
+
+.selectedMessage {
+  margin-top: 1rem;
+  color: #075e54;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.contactOptions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.contactButton {
+  width: 110px; /* Fijo y compacto */
+  padding: 0.6rem 0.3rem;
+  font-size: 0.85rem;
+}
+
+.contactImage {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+
+.copyMessageContainer {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.copyButton {
+  width: 100%;
+  margin: 1rem auto 0 auto;
+  background-color: #25D366;
+  color: white;
+  border: none;
+  padding: 1rem 1.25rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 30px;
+}
+
+
+.copyButton:hover {
+  background-color: #1ebe5d;
 }

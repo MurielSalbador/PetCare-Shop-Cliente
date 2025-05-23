@@ -1,4 +1,4 @@
-import { useFilters } from "../../../hooks/useFilters.js";
+import { useFilters } from "../../../../hooks/useFilters.js";
 
 export default function Filters() {
   const { filters, setFilters } = useFilters();

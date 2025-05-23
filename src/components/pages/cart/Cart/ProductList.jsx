@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { getAllProducts } from "../../../api/fakeStoreApi.js";
-import { useCart } from "../../../store.js";
-import { useFilters } from "../../../hooks/useFilters.js";
+import { getAllProducts } from "../../../../api/fakeStoreApi.js";
+import { useCart } from "../../../../store.js";
+import { useFilters } from "../../../../hooks/useFilters.js";
 
 export default function ProductList() {
   const { data: products = [] } = useQuery({

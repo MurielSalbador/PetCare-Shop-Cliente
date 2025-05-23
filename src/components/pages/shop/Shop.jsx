@@ -1,9 +1,9 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
-import ProductList from "../cart/ProductList.jsx";
-import Cart from "../cart/Cart.jsx";
+import ProductList from "../cart/Cart/ProductList.jsx";
+import Cart from "../cart/Cart/Cart.jsx";
 import { FiltersProvider } from "../../../context/filters.jsx";
-import Filters from "../cart/Filters.jsx";
+import Filters from "../cart/Cart/Filters.jsx";
 import { Link } from "react-router-dom";
 import "./Shop.css";
 
@@ -11,6 +11,14 @@ const queryClient = new QueryClient();
 
 const Shop = () => {
   const [showCart, setShowCart] = useState(false);
+
+  
+  //boton cerrar redirija a shop cuando esta en shop
+  localStorage.setItem("fromPage", "shop"); // o "home"
+  <Link to="/cart" state={{ from: "shop" }}>
+    🛒 Mi carrito
+  </Link>;
+
 
   return (
     <>
@@ -74,9 +82,8 @@ const Shop = () => {
                 <div className="cart">
                   <Cart />
                   <div>
-                      <Link to="/finish">Finalizar tu compra</Link>
+                    <Link to="/finish">Finalizar tu compra</Link>
                   </div>
-                
                 </div>
               </div>
             </div>

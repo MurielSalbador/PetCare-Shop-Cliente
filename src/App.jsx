@@ -1,21 +1,32 @@
-import './App.css'
-import Home from './components/pages/Home/Home.jsx';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Shop from './components/pages/shop/Shop.jsx';
-import CartHeader from './components/pages/cart/CartHeader.jsx';
-import ContactForm  from './components/pages/contact/ContactForm.jsx';
-import FinishCart from './components/pages/cart/FinishCart.jsx'
-import OrderHistory from './components/pages/cart/OrderHistory.jsx'
 
-//esto es de la lista de tareas
+//pagina principal
+import Home from './components/pages/Home/Home.jsx';
+
+//tienda de productos
+import Shop from './components/pages/shop/Shop.jsx';
+
+//carrito con localstorage para que se guarde lo elegido
+import CartHeader from './components/pages/cart/cartHeader/CartHeader.jsx';
+
+//para mandar un email
+import ContactForm  from './components/pages/contact/ContactForm.jsx';
+
+//esto es para mandar el mensaje
+import FinishCart from './components/pages/cart/finishCart/FinishCart.jsx'
+
+//la lista de tareas
 import TodoList from './components/pages/todoList/TodoList.jsx'
 
+//crud
 import ProductList from './components/pages/addProducts/addProductsList.jsx'
 
+//css
+import './App.css'
+
+
+
 function App () {
-
-
-
   return (
      <Router>
       <div className='App'>
@@ -25,7 +36,6 @@ function App () {
             <Route path="/contact" element={<ContactForm />} />
             <Route path="/cart" element={<CartHeader />} />
             <Route path="/finish" element={<FinishCart />} />
-            <Route path="/orders" element={<OrderHistory />} />
             <Route path="/list" element={<TodoList />} />
              <Route path="/addProducts" element={<ProductList />} />
         </Routes>
