@@ -25,7 +25,7 @@ export default function ProductList() {
           />
           <h3 className="product-title">
             {product.title.length > 20
-              ? `${product.title.slice(0, 80)}`
+              ? `${product.title.slice(0, 80)}...`
               : product.title}
           </h3>
           <div className="product-footer">

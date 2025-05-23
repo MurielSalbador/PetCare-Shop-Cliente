@@ -1,0 +1,163 @@
+.register-background {
+  height: 100dvh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+
+.register-container {
+  transform: scale(0.75);
+  transform-origin: center;
+  display: flex;
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 720px;
+  background-color: whitesmoke;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.back-arrow {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+.back-arrow i {
+  font-size: 35px;
+  color: #222  ;
+}
+
+.register-left {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.register-right {
+  flex: 1;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.register-form {
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+h3.text-center.mb-4 {
+  font-size: 32px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #222;
+  text-align: center;
+}
+
+.form-row {
+  display: flex;
+  gap: 30px;
+}
+
+.form-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-control {
+  border-radius: 25px;
+  padding: 12px 18px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #18b6be;
+  outline: none;
+  box-shadow: 0 0 8px rgba(196, 127, 218, 0.4);
+}
+
+.form-control.is-invalid {
+  border-color: #e74c3c;
+}
+
+.form-control.is-invalid:focus {
+  box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
+}
+
+.form-label {
+  font-weight: 600;
+  color: #0e0e0e;
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.custom-button-ingresar {
+  background-color: #7fa753;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  padding: 14px 0;
+  cursor: pointer;
+  border-radius: 25px;
+  font-size: 17px;
+  width: 100%;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.custom-button-ingresar:hover {
+  background-color: #3e4e19;
+  border-color: #243b0f;
+}
+
+.text-danger {
+  font-weight: 600;
+  margin-top: 15px;
+  text-align: center;
+  font-size: 15px;
+}
+
+@media (max-width: 768px) {
+  .register-container {
+    flex-direction: column;
+    height: auto;
+    max-width: 400px;
+    margin: 30px 15px;
+  }
+
+  .register-left {
+    height: 200px;
+  }
+
+  .register-right {
+    padding: 20px 15px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+}

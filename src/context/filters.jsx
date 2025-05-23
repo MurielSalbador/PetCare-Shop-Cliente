@@ -1,4 +1,3 @@
-// src/context/filters.js
 import { createContext, useState } from 'react';
 
 export const FiltersContext = createContext();

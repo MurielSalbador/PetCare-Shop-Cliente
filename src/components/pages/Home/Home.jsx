@@ -62,11 +62,11 @@ export default function Home() {
           <ul className="nav-right">
             <li>
               <a href="/cart" className="link">
-                <i className="fa-solid fa-cart-shopping"></i> 🛒 Mi carrito
+                <i className="fa-solid fa-cart-shopping"></i>  Mi carrito
               </a>
             </li>
             <li>
-              <a href="" className="link" id="hire-me">
+              <a href="/login" className="link" id="hire-me">
                 <i className="fa-regular fa-user"></i> Mi cuenta
               </a>
             </li>

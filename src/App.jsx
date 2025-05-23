@@ -3,6 +3,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 //pagina principal
 import Home from './components/pages/Home/Home.jsx';
 
+//login
+import Login from './components/pages/income/login/Login.jsx';
+
+//register
+import Register from './components/pages/income/register/Register.jsx';
+
 //tienda de productos
 import Shop from './components/pages/shop/Shop.jsx';
 
@@ -38,6 +44,8 @@ function App () {
             <Route path="/finish" element={<FinishCart />} />
             <Route path="/list" element={<TodoList />} />
              <Route path="/addProducts" element={<ProductList />} />
+             <Route path="/login" element={<Login />} />
+             <Route path="/register" element={<Register />} />
         </Routes>
       </div>
     </Router>
