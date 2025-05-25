@@ -29,8 +29,10 @@ const CartHeader = () => {
               />
             </div>
             <h1 className={styles.pageTitle}>🛒 Mi Carrito</h1>
-
-            <Cart />
+            <div className={styles.containerCart}>
+              <Cart />
+            </div>
+            
 
             <div className={styles.classButton}>
               <Link to="/finish">Finalizar tu compra</Link>

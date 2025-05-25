@@ -3,6 +3,7 @@ import { useCart } from "../../../../store.js";
 import { useFilters } from "../../../../hooks/useFilters.js";
 
 
+
 export default function Cart() {
   const { count, cart, addCart, removeCart } = useCart(
     useShallow((state) => ({
@@ -30,7 +31,7 @@ export default function Cart() {
           <li key={item.id + item.title} className="cart-item">
             <span className="item-name">
               {item.title.length > 20
-                ? `${item.title.slice(0, 20)}...`
+                ? `${item.title.slice(0, 80)}`
                 : item.title}
             </span>
             <div className="item-controls">

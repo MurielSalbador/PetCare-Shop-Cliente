@@ -3,10 +3,9 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { toast } from "react-toastify";
-import BackgroundLogin from"../../../../assets/BackgroundLogin.avif"
-import LoginImg from"../../../../assets/LoginImg.avif"
+import BackgroundLogin from "../../../../assets/BackgroundLogin.avif";
+import LoginImg from "../../../../assets/LoginImg.avif";
 import "./Login.css";
-
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -36,6 +35,8 @@ function Login() {
       const data = await res.json();
 
       if (res.ok) {
+        // Guardar token y user en localStorage
+        localStorage.setItem("token", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));
 
         toast.success("✔ Bienvenido!", {
@@ -43,9 +44,10 @@ function Login() {
           autoClose: 3000,
           theme: "colored",
         });
+
         navigate("/");
       } else {
-        toast.error(data.message || "❌ Contraseña o Email incorrecto", {
+        toast.error(data.error || "❌ Contraseña o Email incorrecto", {
           position: "top-right",
           autoClose: 3000,
           theme: "colored",

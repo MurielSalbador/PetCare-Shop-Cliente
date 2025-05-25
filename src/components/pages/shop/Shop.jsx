@@ -1,10 +1,22 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
+//cart
+import { FiltersProvider } from "../../../context/filters.jsx";
 import ProductList from "../cart/Cart/ProductList.jsx";
 import Cart from "../cart/Cart/Cart.jsx";
-import { FiltersProvider } from "../../../context/filters.jsx";
 import Filters from "../cart/Cart/Filters.jsx";
-import { Link } from "react-router-dom";
+
+//protected
+import { isAdminOrSuperAdmin } from "../../../utils/auth.js"; // ajustá el path si es necesario
+
+
+//account
+import AccountButton from "../income/account/AccountButton.jsx";
+
+//styles
+import Logo from "../../../assets/LogoMayorista-Photoroom.png";
 import "./Shop.css";
 
 const queryClient = new QueryClient();
@@ -12,32 +24,30 @@ const queryClient = new QueryClient();
 const Shop = () => {
   const [showCart, setShowCart] = useState(false);
 
-  
   //boton cerrar redirija a shop cuando esta en shop
-  localStorage.setItem("fromPage", "shop"); // o "home"
+  localStorage.setItem("fromPage", "shop");
   <Link to="/cart" state={{ from: "shop" }}>
     🛒 Mi carrito
   </Link>;
-
 
   return (
     <>
       <header className="main-header">
         <div className="header-actions">
-          {/* Navegación izquierda */}
-          <ul className="nav-left">
-            <li>
-              <a href="#" className="logo">
-                <i className="fa-brands fa-pied-piper-alt"></i>
-              </a>
-            </li>
+          <div className="nav-logo">
+            <a href="/" className="logo">
+              <img src={Logo} alt="Logo" className="logo-img" />
+            </a>
+          </div>
+
+          <ul className="nav-center">
             <li>
               <a href="/" className="link">
                 <i className="fa-solid fa-house"></i> Home
               </a>
             </li>
             <li>
-              <a href="/addProducts" className="link">
+              <a href="/conocenos" className="link">
                 <i className="fa-solid fa-info-circle"></i> Conocenos
               </a>
             </li>
@@ -53,17 +63,16 @@ const Shop = () => {
             </li>
           </ul>
 
-          {/* Navegación derecha */}
           <ul className="nav-right">
             <li>
               <a href="/cart" className="link">
                 <i className="fa-solid fa-cart-shopping"></i> Mi carrito
               </a>
             </li>
-            <li>
-              <a href="/login" className="link" id="hire-me">
-                <i className="fa-regular fa-user"></i> Mi cuenta
-              </a>
+             <li>
+              <div className="link" id="hire-me">
+                <i className="fa-regular fa-user"></i><AccountButton />
+              </div>
             </li>
           </ul>
         </div>
@@ -75,13 +84,21 @@ const Shop = () => {
             <div className="container">
               <h1 className="page-title"> Product List</h1>
               <Filters />
+
+              {/* Aquí va el botón Gestión de Productos */}
+              {isAdminOrSuperAdmin() && (
+                <div className="classButtonAdd">
+                  <Link to="/addProducts">Gestión de Productos</Link>
+                </div>
+              )}
+
               <div className="content">
                 <div className="products-wrapper">
                   <ProductList />
                 </div>
                 <div className="cart">
                   <Cart />
-                  <div>
+                  <div className="classButton">
                     <Link to="/finish">Finalizar tu compra</Link>
                   </div>
                 </div>

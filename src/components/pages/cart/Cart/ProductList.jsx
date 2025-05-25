@@ -4,25 +4,24 @@ import { useCart } from "../../../../store.js";
 import { useFilters } from "../../../../hooks/useFilters.js";
 
 export default function ProductList() {
-  const { data: products = [] } = useQuery({
-    queryKey: ["products"],
-    queryFn: getAllProducts,
+  const { filters } = useFilters();
+
+  const { data: products = [], isLoading, error } = useQuery({
+    queryKey: ["products", filters],
+    queryFn: () => getAllProducts(filters),
   });
 
   const addCart = useCart((state) => state.addCart);
-  const { filterProducts } = useFilters();
+  const filteredProducts = products; // Ya vienen filtrados desde el backend
 
-  const filteredProducts = filterProducts(products);
+  if (isLoading) return <p>Cargando productos...</p>;
+  if (error) return <p>Error cargando productos</p>;
 
   return (
     <div className="product-grid">
       {filteredProducts.map((product) => (
         <div key={product.id} className="product-card">
-          <img
-            src={product.image}
-            alt={product.title}
-            className="product-img"
-          />
+          <img src={product.imageUrl} alt={product.title} className="product-img" />
           <h3 className="product-title">
             {product.title.length > 20
               ? `${product.title.slice(0, 80)}...`

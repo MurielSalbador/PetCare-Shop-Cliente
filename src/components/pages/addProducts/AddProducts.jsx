@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import CloseButton from "react-bootstrap/CloseButton";
+import { useNavigate } from "react-router-dom";
+import "./addProducts.css";
 
 function ProductForm({ productId, onSuccess }) {
   const [formData, setFormData] = useState({
@@ -10,6 +13,7 @@ function ProductForm({ productId, onSuccess }) {
     imageUrl: "",
     available: false,
   });
+    const navigate = useNavigate();
 
   useEffect(() => {
     if (productId) {
@@ -37,43 +41,54 @@ function ProductForm({ productId, onSuccess }) {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const payload = {
-      ...formData,
-      price: parseFloat(parseFloat(formData.price).toFixed(2)),
-      stock: Number(formData.stock),
-    };
+  const token = localStorage.getItem("token"); // Obtener token
 
-    try {
-      if (productId) {
-        // actualizar
-        await axios.put(`http://localhost:3000/api/products/${productId}`, payload);
-        alert("✅ Producto actualizado");
-      } else {
-        // crear nuevo
-        await axios.post("http://localhost:3000/api/products", payload);
-        alert("✅ Producto agregado");
-      }
-
-      setFormData({
-        title: "",
-        brand: "",
-        price: "",
-        stock: "",
-        imageUrl: "",
-        available: false,
-      });
-
-      onSuccess?.();
-    } catch (error) {
-      console.error(error);
-      alert("❌ Error al guardar el producto");
-    }
+  const payload = {
+    ...formData,
+    price: parseFloat(parseFloat(formData.price).toFixed(2)),
+    stock: Number(formData.stock),
   };
 
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    if (productId) {
+      await axios.put(`http://localhost:3000/api/products/${productId}`, payload, config);
+      alert("✅ Producto actualizado");
+    } else {
+      await axios.post("http://localhost:3000/api/products", payload, config);
+      alert("✅ Producto agregado");
+    }
+
+    setFormData({
+      title: "",
+      brand: "",
+      price: "",
+      stock: "",
+      imageUrl: "",
+      available: false,
+    });
+
+    onSuccess?.();
+  } catch (error) {
+    console.error(error);
+    alert("❌ Error al guardar el producto");
+  }
+};
+
   return (
-    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", maxWidth: "400px", margin: "20px auto" }}>
+    <div className="container-formAdd">
+      <div className="contactClose">
+        <CloseButton aria-label="Cerrar formulario" onClick={() => navigate("/")} />
+      </div>
+
+       <form className="product-form-container" onSubmit={handleSubmit}>
       <h2>{productId ? "Editar Producto" : "Agregar Producto"}</h2>
 
       <label>Título:</label>
@@ -83,10 +98,25 @@ function ProductForm({ productId, onSuccess }) {
       <input name="brand" value={formData.brand} onChange={handleChange} required />
 
       <label>Precio:</label>
-      <input name="price" type="number" value={formData.price} onChange={handleChange} step="0.01" min="0" required />
+      <input
+        name="price"
+        type="number"
+        value={formData.price}
+        onChange={handleChange}
+        step="0.01"
+        min="0"
+        required
+      />
 
       <label>Stock:</label>
-      <input name="stock" type="number" value={formData.stock} onChange={handleChange} required />
+      <input
+        name="stock"
+        type="number"
+        value={formData.stock}
+        onChange={handleChange}
+        min="0"
+        required
+      />
 
       <label>URL de imagen:</label>
       <input name="imageUrl" value={formData.imageUrl} onChange={handleChange} />
@@ -101,10 +131,10 @@ function ProductForm({ productId, onSuccess }) {
         Disponible
       </label>
 
-      <button type="submit" style={{ marginTop: "10px" }}>
-        {productId ? "Actualizar" : "Guardar"} Producto
-      </button>
+      <button type="submit">{productId ? "Actualizar" : "Guardar"} Producto</button>
     </form>
+    </div>
+   
   );
 }
 

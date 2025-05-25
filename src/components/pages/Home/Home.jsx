@@ -4,6 +4,11 @@ import { Products } from "../serch/productsList.jsx";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import Carousel from "react-bootstrap/Carousel";
+import Logo from "../../../assets/LogoMayorista-Photoroom.png";
+import Wellcome from "../../../assets/GranoWelcome-Photoroom.png";
+
+//account
+import AccountButton from "../income/account/AccountButton.jsx";
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -12,10 +17,15 @@ export default function Home() {
     sort: false,
   });
 
+  //wellcome
+  const [userName, setUserName] = useState("");
 
-  //boton cerrar redirija a home cuando esta en home
-  localStorage.setItem("fromPage", "home"); // o "home"
+  //products
+  const [featuredProducts, setFeaturedProducts] = useState([]);
 
+
+  //redirigir a pages
+  localStorage.setItem("fromPage", "home");
 
   useEffect(() => {
     getProducts({ search });
@@ -25,24 +35,56 @@ export default function Home() {
     setSearch(e.target.value);
   };
 
+  //welcome
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser && storedUser !== "undefined") {
+      try {
+        const parsedUser = JSON.parse(storedUser);
+        if (parsedUser?.username) {
+          setUserName(parsedUser.username);
+        }
+      } catch (error) {
+        console.error("Error al parsear el usuario:", error);
+      }
+    } else {
+      console.warn("No se encontró un usuario válido en localStorage.");
+    }
+  }, []);
+
+  //productos en bbdd
+  useEffect(() => {
+    const fetchFeaturedProducts = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/api/products");
+        const data = await response.json();
+        setFeaturedProducts(data.slice(0, 6));
+      } catch (error) {
+        console.error("Error al cargar productos destacados:", error);
+      }
+    };
+
+    fetchFeaturedProducts();
+  }, []);
+
   return (
     <div className="home-container">
       <header className="main-header">
         <div className="header-actions">
-          {/* Navegación izquierda */}
-          <ul className="nav-left">
-            <li>
-              <a href="#" className="logo">
-                <i className="fa-brands fa-pied-piper-alt"></i>
-              </a>
-            </li>
+          <div className="nav-logo">
+            <a href="/" className="logo">
+              <img src={Logo} alt="Logo" className="logo-img" />
+            </a>
+          </div>
+
+          <ul className="nav-center">
             <li>
               <a href="/" className="link">
                 <i className="fa-solid fa-house"></i> Home
               </a>
             </li>
             <li>
-              <a href="/addProducts" className="link">
+              <a href="/conocenos" className="link">
                 <i className="fa-solid fa-info-circle"></i> Conocenos
               </a>
             </li>
@@ -52,33 +94,42 @@ export default function Home() {
               </a>
             </li>
             <li>
-              <a href="/list" className="link">
+              <a href="/pedidos" className="link">
                 <i className="fa-solid fa-envelope"></i> Pedidos
               </a>
             </li>
           </ul>
 
-          {/* Navegación derecha */}
           <ul className="nav-right">
             <li>
               <a href="/cart" className="link">
-                <i className="fa-solid fa-cart-shopping"></i>  Mi carrito
+                <i className="fa-solid fa-cart-shopping"></i> Mi carrito
               </a>
             </li>
             <li>
-              <a href="/login" className="link" id="hire-me">
-                <i className="fa-regular fa-user"></i> Mi cuenta
-              </a>
+              <div className="link" id="hire-me">
+                <i className="fa-regular fa-user"></i><AccountButton />
+              </div>
             </li>
           </ul>
         </div>
       </header>
 
-      <div className="tienda button">
-        <h2>¡Visitá nuestra tienda para ver todos los productos!</h2>
-        <Link to="/shop">
-          <button>Tienda</button>
-        </Link>
+      {/* wellcome */}
+      <div className="hero-welcome-section">
+        <div className="welcome-card">
+          <img src={Wellcome} alt="Welcome" className="welcome-img" />
+          {userName && (
+            <div className="welcome-message">¡Bienvenid@, {userName}!</div>
+          )}
+        </div>
+
+        <div className="shop-invite">
+          <h2>¡Visitá nuestra tienda para ver todos los productos!</h2>
+          <Link to="/shop">
+            <button className="shop-button">Tienda</button>
+          </Link>
+        </div>
       </div>
 
       <Carousel fade controls={false} indicators={false} interval={3000}>
@@ -126,51 +177,20 @@ export default function Home() {
         </div>
       </main>
 
+      {/* Productos destacados */}
       <section className="categories">
-        <h3>Algunos de nuestros productos!</h3>
-        <div className="category-items">
-          <div className="category-item">
-            <img
-              src="https://acdn-us.mitiendanube.com/stores/002/428/163/products/3-8355791aacba83caa917271887025177-480-0.webp"
-              alt="Granola Pasas de Uva y Almendras x 300gr"
-            />
-            <span>Granola Pasas de Uva y Almendras x 300gr</span>
-          </div>
-          <div className="category-item">
-            <img
-              src="https://acdn-us.mitiendanube.com/stores/002/428/163/products/4-014bf2d2580c9182f317424005608787-1024-1024.webp"
-              alt="Barras de Cereal Pasas de Uva x 45 grs"
-            />
-            <span>Barras de Cereal Pasas de Uva x 45 grs</span>
-          </div>
-          <div className="category-item">
-            <img
-              src="https://acdn-us.mitiendanube.com/stores/002/428/163/products/4-bdca41a5bbbb4d99e917271885875888-1024-1024.webp"
-              alt="Granola Natural x 300grs"
-            />
-            <span>Granola Natural x 300grs</span>
-          </div>
-          <div className="category-item">
-            <img
-              src="https://acdn-us.mitiendanube.com/stores/002/428/163/products/5-54b3c3f7cc10829ce817424004730174-1024-1024.webp"
-              alt="Barras de Cereal Coco x 45 grs"
-            />
-            <span>Barras de Cereal Coco x 45 grs</span>
-          </div>
-          <div className="category-item">
-            <img
-              src="https://acdn-us.mitiendanube.com/stores/002/428/163/products/19-05487ea95382c80f0917271884686041-1024-1024.webp"
-              alt="Granola VeganMAX x 300grs"
-            />
-            <span>Granola VeganMAX x 300grs</span>
-          </div>
-          <div className="category-item">
-            <img
-              src="https://acdn-us.mitiendanube.com/stores/002/428/163/products/18-0d36c297c7a1a51f9e17271887482389-1024-1024.webp"
-              alt="Granola Chocolate y Nuez x 1kg"
-            />
-            <span>Granola Chocolate y Nuez x 1kg</span>
-          </div>
+        <h3 className="section-title">Algunos de nuestros productos</h3>
+        <div className="category-items-grid">
+          {featuredProducts.map((product) => (
+            <div className="category-card" key={product.id}>
+              <img
+                src={product.imageUrl}
+                alt={product.title}
+                className="category-image"
+              />
+              <div className="category-title">{product.title}</div>
+            </div>
+          ))}
         </div>
       </section>
 

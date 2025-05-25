@@ -1,27 +1,27 @@
 import { useState } from "react";
 import { useCart } from "../../../../store.js";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import ModalPurchase from "../../../modal/ModalPurchase.jsx";
 import CloseButton from "react-bootstrap/CloseButton";
 import styles from "./FinishCart.module.css";
 
 const FinishCart = () => {
-
   const contacts = [
     {
       name: "Hernan",
-      phone: "5493415494912",
-      image: "https://ui-avatars.com/api/?name=Hernan"
+      phone: "5493416863976",
+      image: "https://ui-avatars.com/api/?name=Hernan",
     },
     {
       name: "Ruddi",
       phone: "5493416946454",
-      image: "https://ui-avatars.com/api/?name=Ruddi"
+      image: "https://ui-avatars.com/api/?name=Ruddi",
     },
     {
       name: "Nacho",
       phone: "5493413916661",
-      image: "https://ui-avatars.com/api/?name=Nacho"
+      image: "https://ui-avatars.com/api/?name=Nacho",
     },
   ];
 
@@ -36,6 +36,14 @@ const FinishCart = () => {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
+  //acount
+  const storedUser = localStorage.getItem("user");
+  const user = storedUser ? JSON.parse(storedUser) : null;
+  const userEmail = user?.email || "";
+
+  const userOrdersKey = `orders_${userEmail}`;
+
+  //sum cart
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const handleChange = (e) => {
@@ -43,25 +51,31 @@ const FinishCart = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-
   const handleContactClick = (contact) => {
     const { name, city, address } = formData;
 
-    if (name.trim().length < 3 || city.trim().length < 2 || address.trim().length < 5) {
-      alert("Por favor completá todos los campos correctamente antes de elegir el contacto.");
+    if (
+      name.trim().length < 3 ||
+      city.trim().length < 2 ||
+      address.trim().length < 5
+    ) {
+      alert(
+        "Por favor completá todos los campos correctamente antes de elegir el contacto."
+      );
       return;
     }
 
     setSelectedContact(contact);
-  }
-
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const { name, city, address } = formData;
 
     if (cart.length === 0) {
-      alert("Tu carrito está vacío. Agregá al menos un producto antes de confirmar la compra.");
+      alert(
+        "Tu carrito está vacío. Agregá al menos un producto antes de confirmar la compra."
+      );
       return;
     }
 
@@ -77,33 +91,71 @@ const FinishCart = () => {
       alert("La dirección debe tener al menos 5 caracteres.");
       return;
     }
+    if (!user) {
+      alert("Debés iniciar sesión para confirmar la compra.");
+      navigate("/login");
+      return;
+    }
 
+    // Antes del POST al backend
     const newOrder = {
       name,
       city,
       address,
-      date: new Date().toLocaleString(),
       items: cart,
       total: total.toFixed(2),
+      date: new Date().toLocaleString(), // <- agregar esto
     };
 
-    const previousOrders = JSON.parse(localStorage.getItem("orders")) || [];
-    localStorage.setItem("orders", JSON.stringify([...previousOrders, newOrder]));
+    const userOrdersKey = `orders_${user.email}`;
+    const previousOrders =
+      JSON.parse(localStorage.getItem(userOrdersKey)) || [];
+    localStorage.setItem(
+      userOrdersKey,
+      JSON.stringify([...previousOrders, newOrder])
+    );
 
-    const message =
-      `🛒 Nuevo Pedido Realizado:
+    // Enviar pedido al backend
+    const token = localStorage.getItem("token");
 
-    👤 Nombre: ${name}
-    🏙️ Localidad: ${city}
-    📍 Dirección: ${address}
-    🕒 Fecha: ${newOrder.date}
+    axios
+      .post("http://localhost:3000/api/orders", newOrder, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        clearCart();
+        setShowModal(true);
+        window.open(whatsappUrl, "_blank");
+      })
+      .catch((err) => {
+        console.error("Error al guardar pedido:", err);
+        alert("Hubo un error al guardar el pedido. Intentalo de nuevo.");
+      });
 
-    📦 Productos:
-    ${cart.map(item => `• ${item.title} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`).join("\n")}
+    const message = `🛒 Nuevo Pedido Realizado por ${user.name || "usuario"} (${
+      user.email || "email no disponible"
+    }):
 
-    💰 Total: $${newOrder.total}
+      👤 Nombre: ${name}
+      🏙️ Localidad: ${city}
+      📍 Dirección: ${address}
+      🕒 Fecha: ${newOrder.date}
 
-    ¡Gracias por tu compra! 🙌`;
+      📦 Productos:
+      ${cart
+        .map(
+          (item) =>
+            `• ${item.title} x${item.quantity} - $${(
+              item.price * item.quantity
+            ).toFixed(2)}`
+        )
+        .join("\n")}
+
+      💰 Total: $${newOrder.total}
+
+      ¡Gracias por tu compra! 🙌`;
 
     const encodedMessage = encodeURIComponent(message);
 
@@ -124,7 +176,10 @@ const FinishCart = () => {
       <main className={styles.finishCart}>
         <div className={styles.container}>
           <div className={styles.contactClose}>
-            <CloseButton aria-label="Cerrar formulario" onClick={() => navigate("/")} />
+            <CloseButton
+              aria-label="Cerrar formulario"
+              onClick={() => navigate("/")}
+            />
           </div>
 
           <img
@@ -180,7 +235,9 @@ const FinishCart = () => {
             </div>
 
             <div className={styles.checkoutSummary}>
-              <p>Total a pagar: <strong>${total.toFixed(2)}</strong></p>
+              <p>
+                Total a pagar: <strong>${total.toFixed(2)}</strong>
+              </p>
             </div>
 
             <p>Elegí con quién querés contactarte:</p>
@@ -190,37 +247,46 @@ const FinishCart = () => {
                   key={contact.phone}
                   type="button"
                   onClick={() => handleContactClick(contact)}
-                  className={`${styles.contactButton} ${selectedContact?.phone === contact.phone ? styles.contactButtonSelected : ""}`}
-
+                  className={`${styles.contactButton} ${
+                    selectedContact?.phone === contact.phone
+                      ? styles.contactButtonSelected
+                      : ""
+                  }`}
                 >
-                  <img src={contact.image} alt={contact.name} className={styles.contactImage} />
+                  <img
+                    src={contact.image}
+                    alt={contact.name}
+                    className={styles.contactImage}
+                  />
                   <span>{contact.name}</span>
                 </button>
-
-
               ))}
 
               {selectedContact && (
                 <p className={styles.selectedMessage}>
-                  Vas a contactarte con <strong>{selectedContact.name}</strong> por WhatsApp 📱
+                  Vas a contactarte con <strong>{selectedContact.name}</strong>{" "}
+                  por WhatsApp 📱
                 </p>
               )}
-
 
               <div className={styles.copyMessageContainer}>
                 <button
                   type="button"
                   onClick={() => {
                     const { name, city, address } = formData;
+                    // Antes del POST al backend
                     const newOrder = {
                       name,
                       city,
                       address,
-                      date: new Date().toLocaleString(),
                       items: cart,
                       total: total.toFixed(2),
+                      date: new Date().toLocaleString(), // <- agregar esto
                     };
-                    const message = `🛒 *Nuevo Pedido Realizado*:
+
+                    const message = `🛒 *Nuevo Pedido Realizado* por *${
+                      user.name || "usuario"
+                    }* (${user.email || "sin email"}):
 
                     👤 *Nombre:* ${name}
                     🏙️ *Localidad:* ${city}
@@ -228,13 +294,21 @@ const FinishCart = () => {
                     🕒 *Fecha:* ${newOrder.date}
 
                     📦 *Productos:*
-                    ${cart.map(item => `• ${item.title} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`).join("\n")}
+                    ${cart
+                      .map(
+                        (item) =>
+                          `• ${item.title} x${item.quantity} - $${(
+                            item.price * item.quantity
+                          ).toFixed(2)}`
+                      )
+                      .join("\n")}
 
                     💰 *Total:* $${newOrder.total}
 
                     ¡Gracias por tu compra! 🙌`;
 
-                    navigator.clipboard.writeText(message)
+                    navigator.clipboard
+                      .writeText(message)
                       .then(() => alert("Mensaje copiado al portapapeles ✅"))
                       .catch(() => alert("No se pudo copiar el mensaje 😞"));
                   }}
@@ -243,7 +317,6 @@ const FinishCart = () => {
                   📋 Copiá tu mensaje ya listo para enviar
                 </button>
               </div>
-
             </div>
 
             <button type="submit">Confirmar Compra</button>

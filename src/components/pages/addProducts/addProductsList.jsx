@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ProductForm from "./AddProducts.jsx";
+import "./addProductsList.css"
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -24,18 +25,27 @@ function ProductList() {
   };
 
   const handleDelete = async (id) => {
-    const confirm = window.confirm("¿Estás seguro que querés eliminar este producto?");
-    if (!confirm) return;
+  const confirm = window.confirm(
+    "¿Estás seguro que querés eliminar este producto?"
+  );
+  if (!confirm) return;
 
-    try {
-      await axios.delete(`http://localhost:3000/api/products/${id}`);
-      alert("✅ Producto eliminado");
-      fetchProducts(); // Recarga productos
-    } catch (err) {
-      console.error("Error al eliminar:", err);
-      alert("❌ No se pudo eliminar el producto");
-    }
-  };
+  try {
+    const token = localStorage.getItem("token"); // Asegurate que esté bien guardado tras login
+
+    await axios.delete(`http://localhost:3000/api/products/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    alert("✅ Producto eliminado");
+    fetchProducts(); // Recarga productos
+  } catch (err) {
+    console.error("Error al eliminar:", err);
+    alert("❌ No se pudo eliminar el producto");
+  }
+};
 
   const handleSuccess = () => {
     setEditingProductId(null);
@@ -43,42 +53,40 @@ function ProductList() {
   };
 
   return (
-    <div>
+<div className="container-formAdd">
+  <div >
       <ProductForm productId={editingProductId} onSuccess={handleSuccess} />
 
-      <h2 style={{ textAlign: "center", marginTop: "40px" }}>Productos Guardados</h2>
-      <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+      <div className="admin-products">
+        <h2>Productos Guardados</h2>
         {products.map((product) => (
-          <div
-            key={product.id}
-            style={{
-              border: "1px solid #ccc",
-              padding: "10px",
-              marginBottom: "10px",
-              borderRadius: "6px",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <div>
+          <div key={product.id} className="admin-product-card">
+            <div className="admin-product-info">
               <h3>{product.title}</h3>
-              <p><strong>Marca:</strong> {product.brand}</p>
-              <p><strong>Precio:</strong> ${Number(product.price).toLocaleString("es-AR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-              <p><strong>Stock:</strong> {product.stock}</p>
-              <p><strong>Disponible:</strong> {product.available ? "Sí" : "No"}</p>
+              <p>
+                <strong>Marca:</strong> {product.brand}
+              </p>
+              <p>
+                <strong>Precio:</strong> $
+                {Number(product.price).toLocaleString("es-AR", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
+              </p>
+              <p>
+                <strong>Stock:</strong> {product.stock}
+              </p>
+              <p>
+                <strong>Disponible:</strong> {product.available ? "Sí" : "No"}
+              </p>
               {product.imageUrl && (
-                <img
-                  src={product.imageUrl}
-                  alt={product.title}
-                  style={{ width: "100px", marginTop: "10px" }}
-                />
+                <img src={product.imageUrl} alt={product.title} />
               )}
             </div>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+            <div className="admin-product-actions">
               <button onClick={() => handleEdit(product.id)}>✏️ Editar</button>
-              <button onClick={() => handleDelete(product.id)} style={{ backgroundColor: "#f44336", color: "#fff" }}>
+              <button onClick={() => handleDelete(product.id)}>
                 🗑️ Eliminar
               </button>
             </div>
@@ -86,6 +94,9 @@ function ProductList() {
         ))}
       </div>
     </div>
+</div>
+     
+    
   );
 }
 
