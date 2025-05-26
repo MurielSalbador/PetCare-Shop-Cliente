@@ -13,13 +13,15 @@ function ProductForm({ productId, onSuccess }) {
     imageUrl: "",
     available: false,
   });
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (productId) {
-      axios.get(`http://localhost:3000/api/products/${productId}`).then((res) => {
-        setFormData(res.data);
-      });
+      axios
+        .get(`http://localhost:3000/api/products/${productId}`)
+        .then((res) => {
+          setFormData(res.data);
+        });
     } else {
       setFormData({
         title: "",
@@ -41,100 +43,134 @@ function ProductForm({ productId, onSuccess }) {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const token = localStorage.getItem("token"); // Obtener token
+    const priceParsed = parseFloat(parseFloat(formData.price).toFixed(2));
+    const stockParsed = Number(formData.stock);
 
-  const payload = {
-    ...formData,
-    price: parseFloat(parseFloat(formData.price).toFixed(2)),
-    stock: Number(formData.stock),
-  };
-
-  try {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-
-    if (productId) {
-      await axios.put(`http://localhost:3000/api/products/${productId}`, payload, config);
-      alert("✅ Producto actualizado");
-    } else {
-      await axios.post("http://localhost:3000/api/products", payload, config);
-      alert("✅ Producto agregado");
+    if (isNaN(priceParsed) || priceParsed < 0) {
+      alert("Ingrese un precio válido mayor o igual a 0");
+      return;
     }
 
-    setFormData({
-      title: "",
-      brand: "",
-      price: "",
-      stock: "",
-      imageUrl: "",
-      available: false,
-    });
+    if (isNaN(stockParsed) || stockParsed < 0) {
+      alert("Ingrese un stock válido mayor o igual a 0");
+      return;
+    }
+    const payload = {
+      ...formData,
+      price: priceParsed,
+      stock: stockParsed,
+    };
 
-    onSuccess?.();
-  } catch (error) {
-    console.error(error);
-    alert("❌ Error al guardar el producto");
-  }
-};
+    const token = localStorage.getItem("token"); // Obtener token
+
+    try {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      if (productId) {
+        await axios.put(
+          `http://localhost:3000/api/products/${productId}`,
+          payload,
+          config
+        );
+        alert("✅ Producto actualizado");
+      } else {
+        await axios.post("http://localhost:3000/api/products", payload, config);
+        alert("✅ Producto agregado");
+      }
+
+      setFormData({
+        title: "",
+        brand: "",
+        price: "",
+        stock: "",
+        imageUrl: "",
+        available: false,
+      });
+
+      onSuccess?.();
+    } catch (error) {
+      console.error(error);
+      alert("❌ Error al guardar el producto");
+    }
+  };
 
   return (
     <div className="container-formAdd">
       <div className="contactClose">
-        <CloseButton aria-label="Cerrar formulario" onClick={() => navigate("/")} />
+        <CloseButton
+          aria-label="Cerrar formulario"
+          onClick={() => navigate("/")}
+        />
       </div>
 
-       <form className="product-form-container" onSubmit={handleSubmit}>
-      <h2>{productId ? "Editar Producto" : "Agregar Producto"}</h2>
+      <form className="product-form-container" onSubmit={handleSubmit}>
+        <h2>{productId ? "Editar Producto" : "Agregar Producto"}</h2>
 
-      <label>Título:</label>
-      <input name="title" value={formData.title} onChange={handleChange} required />
-
-      <label>Marca:</label>
-      <input name="brand" value={formData.brand} onChange={handleChange} required />
-
-      <label>Precio:</label>
-      <input
-        name="price"
-        type="number"
-        value={formData.price}
-        onChange={handleChange}
-        step="0.01"
-        min="0"
-        required
-      />
-
-      <label>Stock:</label>
-      <input
-        name="stock"
-        type="number"
-        value={formData.stock}
-        onChange={handleChange}
-        min="0"
-        required
-      />
-
-      <label>URL de imagen:</label>
-      <input name="imageUrl" value={formData.imageUrl} onChange={handleChange} />
-
-      <label>
+        <label>Título:</label>
         <input
-          type="checkbox"
-          name="available"
-          checked={formData.available}
+          name="title"
+          value={formData.title}
+          onChange={handleChange}
+          required
+        />
+
+        <label>Marca:</label>
+        <input
+          name="brand"
+          value={formData.brand}
+          onChange={handleChange}
+          required
+        />
+
+        <label>Precio:</label>
+        <input
+          name="price"
+          type="number"
+          value={formData.price}
+          onChange={handleChange}
+          step="0.01"
+          min="0"
+          required
+        />
+
+        <label>Stock:</label>
+        <input
+          name="stock"
+          type="number"
+          value={formData.stock}
+          onChange={handleChange}
+          min="0"
+          required
+        />
+
+        <label>URL de imagen:</label>
+        <input
+          name="imageUrl"
+          value={formData.imageUrl}
           onChange={handleChange}
         />
-        Disponible
-      </label>
 
-      <button type="submit">{productId ? "Actualizar" : "Guardar"} Producto</button>
-    </form>
+        <label>
+          <input
+            type="checkbox"
+            name="available"
+            checked={formData.available}
+            onChange={handleChange}
+          />
+          Disponible
+        </label>
+
+        <button type="submit">
+          {productId ? "Actualizar" : "Guardar"} Producto
+        </button>
+      </form>
     </div>
-   
   );
 }
 
