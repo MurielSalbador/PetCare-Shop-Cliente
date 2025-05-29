@@ -142,3 +142,8 @@
 .copyButton:hover {
   background-color: #1ebe5d;
 }
+
+.buttonClose{
+  position: absolute;
+
+}

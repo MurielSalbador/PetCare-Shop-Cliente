@@ -2,8 +2,6 @@ import { useShallow } from "zustand/shallow";
 import { useCart } from "../../../../store.js";
 import { useFilters } from "../../../../hooks/useFilters.js";
 
-
-
 export default function Cart() {
   const { count, cart, addCart, removeCart } = useCart(
     useShallow((state) => ({
@@ -37,7 +35,19 @@ export default function Cart() {
             <div className="item-controls">
               <button onClick={() => removeCart(item.id)}>-</button>
               <span>{item.quantity}</span>
-              <button onClick={() => addCart(item)}>+</button>
+              <button
+                onClick={() => {
+                  if (item.quantity < item.stock) {
+                    addCart(item);
+                  } else {
+                    alert(
+                      "¡Has alcanzado el stock máximo disponible para este producto!"
+                    );
+                  }
+                }}
+              >
+                +
+              </button>
             </div>
             <span className="item-total">
               ${(item.price * item.quantity).toFixed(2)}

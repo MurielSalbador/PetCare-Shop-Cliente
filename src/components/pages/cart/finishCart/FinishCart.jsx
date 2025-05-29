@@ -25,7 +25,7 @@ const FinishCart = () => {
     },
   ];
 
-  const { cart, clearCart } = useCart();
+  const { cart, clearCart, setCart } = useCart();
   const [formData, setFormData] = useState({
     name: "",
     city: "",
@@ -34,6 +34,7 @@ const FinishCart = () => {
 
   const [selectedContact, setSelectedContact] = useState(null);
   const [showModal, setShowModal] = useState(false);
+
   const navigate = useNavigate();
 
   //acount
@@ -68,14 +69,69 @@ const FinishCart = () => {
     setSelectedContact(contact);
   };
 
-  const handleSubmit = (e) => {
+
+
+
+// Agrega un producto al carrito, validando contra el stock disponible
+const addToCart = (product) => {
+  const existingProduct = cart.find((item) => item.id === product.id);
+
+  if (existingProduct) {
+    if (existingProduct.quantity < product.stock) {
+      setCart(
+        cart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        )
+      );
+    } else {
+      alert("Has alcanzado el límite de stock disponible para este producto.");
+    }
+  } else {
+    if (product.stock > 0) {
+      setCart([...cart, { ...product, quantity: 1 }]);
+    } else {
+      alert("Este producto no tiene stock disponible.");
+    }
+  }
+};
+
+
+  //stock
+ const finishPurchase = async () => {
+  try {
+    const token = localStorage.getItem("token");
+
+    const updates = cart.map((item) => ({
+      productId: item.id,
+      quantity: item.quantity,
+    }));
+
+    await fetch("http://localhost:3000/api/products/decrement-multiple", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(updates),
+    });
+
+    return true;
+  } catch (error) {
+    console.error("Error al actualizar el stock:", error);
+    alert("Error al actualizar el stock. Intentá nuevamente.");
+    return false;
+  }
+};
+
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const { name, city, address } = formData;
 
     if (cart.length === 0) {
-      alert(
-        "Tu carrito está vacío. Agregá al menos un producto antes de confirmar la compra."
-      );
+      alert("Tu carrito está vacío...");
       return;
     }
 
@@ -97,17 +153,20 @@ const FinishCart = () => {
       return;
     }
 
-    // Antes del POST al backend
+    if (!selectedContact) {
+      alert("Por favor seleccioná un contacto antes de confirmar la compra.");
+      return;
+    }
+
     const newOrder = {
       name,
       city,
       address,
       items: cart,
       total: total.toFixed(2),
-      date: new Date().toLocaleString(), // <- agregar esto
+      date: new Date().toLocaleString(),
     };
 
-    const userOrdersKey = `orders_${user.email}`;
     const previousOrders =
       JSON.parse(localStorage.getItem(userOrdersKey)) || [];
     localStorage.setItem(
@@ -115,60 +174,52 @@ const FinishCart = () => {
       JSON.stringify([...previousOrders, newOrder])
     );
 
-    // Enviar pedido al backend
     const token = localStorage.getItem("token");
 
-    axios
-      .post("http://localhost:3000/api/orders", newOrder, {
+    try {
+      await axios.post("http://localhost:3000/api/orders", newOrder, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      })
-      .then((res) => {
-        clearCart();
-        setShowModal(true);
-        window.open(whatsappUrl, "_blank");
-      })
-      .catch((err) => {
-        console.error("Error al guardar pedido:", err);
-        alert("Hubo un error al guardar el pedido. Intentalo de nuevo.");
       });
 
-    const message = `🛒 Nuevo Pedido Realizado por ${user.name || "usuario"} (${
-      user.email || "email no disponible"
-    }):
+      const stockUpdated = await finishPurchase();
+      if (!stockUpdated) return;
 
-      👤 Nombre: ${name}
-      🏙️ Localidad: ${city}
-      📍 Dirección: ${address}
-      🕒 Fecha: ${newOrder.date}
+      const message = `🛒 Nuevo Pedido Realizado por ${
+        user.name || "usuario"
+      } (${user.email || "email no disponible"}):
 
-      📦 Productos:
-      ${cart
-        .map(
-          (item) =>
-            `• ${item.title} x${item.quantity} - $${(
-              item.price * item.quantity
-            ).toFixed(2)}`
-        )
-        .join("\n")}
+    👤 Nombre: ${name}
+    🏙️ Localidad: ${city}
+    📍 Dirección: ${address}
+    🕒 Fecha: ${newOrder.date}
 
-      💰 Total: $${newOrder.total}
+    📦 Productos:
+    ${cart
+      .map(
+        (item) =>
+          `• ${item.title} x${item.quantity} - $${(
+            item.price * item.quantity
+          ).toFixed(2)}`
+      )
+      .join("\n")}
 
-      ¡Gracias por tu compra! 🙌`;
+    💰 Total: $${newOrder.total}
 
-    const encodedMessage = encodeURIComponent(message);
+    ¡Gracias por tu compra! 🙌`;
 
-    if (!selectedContact) {
-      alert("Por favor seleccioná un contacto antes de confirmar la compra.");
-      return;
+      const whatsappUrl = `https://api.whatsapp.com/send?phone=${
+        selectedContact.phone
+      }&text=${encodeURIComponent(message)}`;
+
+      clearCart();
+      setShowModal(true);
+      window.open(whatsappUrl, "_blank");
+    } catch (err) {
+      console.error("Error al guardar pedido:", err);
+      alert("Hubo un error al guardar el pedido. Intentalo de nuevo.");
     }
-
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=${selectedContact.phone}&text=${encodedMessage}`;
-
-    clearCart();
-    window.open(whatsappUrl, "_blank");
-    setShowModal(true);
   };
 
   return (

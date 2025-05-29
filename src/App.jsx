@@ -21,9 +21,6 @@ import ContactForm from "./components/pages/contact/ContactForm.jsx";
 //esto es para mandar el mensaje
 import FinishCart from "./components/pages/cart/finishCart/FinishCart.jsx";
 
-//la lista de tareas
-import TodoList from "./components/pages/todoList/TodoList.jsx";
-
 //crud
 import ProductList from "./components/pages/addProducts/addProductsList.jsx";
 
@@ -39,12 +36,17 @@ import MyOrders from "./components/pages/cart/myOrders/MyOrders.jsx";
 //mostras pedidos
 import Orders from './components/pages/OrdersClients/Orders.jsx'
 
+//provider
+// import  {ModeContext}  from "./components/context/ModeContext.jsx";
+
 
 //css
 import "./App.css";
 
 function App() {
   return (
+
+    // <ModeContext.Provider>
     <Router>
       <div className="App">
         <Routes>
@@ -53,7 +55,7 @@ function App() {
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/cart" element={<CartHeader />} />
           <Route path="/finish" element={<FinishCart />} />
-          <Route path="/pedidos" element={<Orders />} />
+          <Route path="/allOrders" element={<Orders />} />
           <Route
             path="/addProducts"
             element={
@@ -69,6 +71,7 @@ function App() {
         </Routes>
       </div>
     </Router>
+    // </ModeContext.Provider>
   );
 }
 

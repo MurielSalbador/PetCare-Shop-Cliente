@@ -6,7 +6,11 @@ import { useFilters } from "../../../../hooks/useFilters.js";
 export default function ProductList() {
   const { filters } = useFilters();
 
-  const { data: products = [], isLoading, error } = useQuery({
+  const {
+    data: products = [],
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["products", filters],
     queryFn: () => getAllProducts(filters),
   });
@@ -21,7 +25,11 @@ export default function ProductList() {
     <div className="product-grid">
       {filteredProducts.map((product) => (
         <div key={product.id} className="product-card">
-          <img src={product.imageUrl} alt={product.title} className="product-img" />
+          <img
+            src={product.imageUrl}
+            alt={product.title}
+            className="product-img"
+          />
           <h3 className="product-title">
             {product.title.length > 20
               ? `${product.title.slice(0, 80)}...`
@@ -29,12 +37,18 @@ export default function ProductList() {
           </h3>
           <div className="product-footer">
             <p className="product-price">${product.price}</p>
-            <button
-              onClick={() => addCart({ ...product, quantity: 1 })}
-              className="add-btn"
-            >
-              add to cart
-            </button>
+
+            {/* mostramos si esta agotado o no */}
+            {product.stock === 1 && (
+              <p className="stock-alert">¡Último disponible!</p>
+            )}
+            {product.stock === 0 ? (
+              <button disabled>Sin stock</button>
+            ) : (
+              <button onClick={() => addCart(product)}>
+                Agregar al carrito
+              </button>
+            )}
           </div>
         </div>
       ))}
