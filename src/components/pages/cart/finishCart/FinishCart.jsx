@@ -9,19 +9,14 @@ import styles from "./FinishCart.module.css";
 const FinishCart = () => {
   const contacts = [
     {
-      name: "Hernan",
-      phone: "5493416863976",
-      image: "https://ui-avatars.com/api/?name=Hernan",
+      name: "Juan",
+      phone: "5493415494912",
+      image: "https://ui-avatars.com/api/?name=J",
     },
     {
-      name: "Ruddi",
-      phone: "5493416946454",
-      image: "https://ui-avatars.com/api/?name=Ruddi",
-    },
-    {
-      name: "Nacho",
-      phone: "5493413916661",
-      image: "https://ui-avatars.com/api/?name=Nacho",
+      name: "Muriel",
+      phone: "5493416597540",
+      image: "https://ui-avatars.com/api/?name=M",
     },
   ];
 

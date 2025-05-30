@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useProducts } from "../../../../../Mayorista-Api/src/hooks/serch/useProducts.js";
+import { useProducts } from "../../../../../PetCare-Shop-Server/src/hooks/serch/useProducts.js";
 import { Products } from "../serch/productsList.jsx";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import Carousel from "react-bootstrap/Carousel";
 import Logo from "../../../assets/LogoMayorista-Photoroom.png";
-import Wellcome from "../../../assets/GranoWelcome-Photoroom.png";
+import Banner1 from "../../../assets/banner1.png"
+import Banner2 from "../../../assets/banner2.png"
+import Banner3 from "../../../assets/banner3.png"
+import { Container, Row, Col, Button, Card } from "react-bootstrap";  
 
 //account
 import AccountButton from "../income/account/AccountButton.jsx";
@@ -17,9 +20,14 @@ export default function Home() {
     sort: false,
   });
 
+  //wellcome
   const [userName, setUserName] = useState("");
+
+  //products
   const [featuredProducts, setFeaturedProducts] = useState([]);
 
+
+  //redirigir a pages
   localStorage.setItem("fromPage", "home");
 
   useEffect(() => {
@@ -30,6 +38,7 @@ export default function Home() {
     setSearch(e.target.value);
   };
 
+  //welcome
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser && storedUser !== "undefined") {
@@ -41,9 +50,12 @@ export default function Home() {
       } catch (error) {
         console.error("Error al parsear el usuario:", error);
       }
+    } else {
+      console.warn("No se encontró un usuario válido en localStorage.");
     }
   }, []);
 
+  //productos en bbdd
   useEffect(() => {
     const fetchFeaturedProducts = async () => {
       try {
@@ -60,7 +72,6 @@ export default function Home() {
 
   return (
     <div className="home-container">
-      {/* HEADER */}
       <header className="main-header">
         <div className="header-actions">
           <div className="nav-logo">
@@ -86,7 +97,7 @@ export default function Home() {
               </a>
             </li>
             <li>
-              <a href="/myOrders" className="link">
+              <a href="/pedidos" className="link">
                 <i className="fa-solid fa-envelope"></i> Pedidos
               </a>
             </li>
@@ -99,65 +110,93 @@ export default function Home() {
               </a>
             </li>
             <li>
-              <div className="link">
-                <AccountButton />
+              <div className="link" id="hire-me">
+                <i className="fa-regular fa-user"></i><AccountButton/>
               </div>
             </li>
           </ul>
         </div>
       </header>
+      <Carousel fade controls={false} indicators={false} interval={6000}>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={Banner3}
+            alt="First slide"
+          />
+          <div className="carousel-text-container">
+            {userName && (
+              <h2 className="carousel-welcome">¡Bienvenid@, {userName}!</h2>
+            )}
+            <p className="carousel-subtitle">¡Visitá nuestra tienda para ver todos los productos!</p>
+            <Link to="/shop">
+              <button className="shop-button">Tienda</button>
+            </Link>
+          </div>
+        </Carousel.Item>
+             <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={Banner1}
+            alt="First slide"
+          />
+          <div className="carousel-text-container">
+            {userName && (
+              <h2 className="carousel-welcome">¡Bienvenid@, {userName}!</h2>
+            )}
+            <p className="carousel-subtitle">¡Visitá nuestra tienda para ver todos los productos!</p>
+            <Link to="/shop">
+              <button className="shop-button">Tienda</button>
+            </Link>
+          </div>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={Banner2}
+            alt="First slide"
+          />
+          <div className="carousel-text-container">
+            {userName && (
+              <h2 className="carousel-welcome">¡Bienvenid@, {userName}!</h2>
+            )}
+            <p className="carousel-subtitle">¡Visitá nuestra tienda para ver todos los productos!</p>
+            <Link to="/shop">
+              <button className="shop-button">Tienda</button>
+            </Link>
+          </div>
+        </Carousel.Item>
+      </Carousel>
 
+      <Container fluid className="bg-light py-3">
+        <Row className="text-center justify-content-center align-items-center">
+          <Col xs={4} md={3} className="d-flex align-items-center justify-content-center gap-2">
+            <i className="fa-solid fa-truck-fast fa-2x text-danger"></i>
+            <div>
+              <strong>ENVÍO GRATIS</strong>
+              <br />
+              En Rosario y alrededores por compras desde $10.000
+            </div>
+          </Col>
+          <Col xs={4} md={3} className="d-flex align-items-center justify-content-center gap-2 border-start border-end">
+            <i className="fa-solid fa-paw fa-2x text-success"></i>
+            <div>
+              <strong>+100 PRODUCTOS</strong>
+              <br />
+              Para perros, gatos y más
+            </div>
+          </Col>
+          <Col xs={4} md={3} className="d-flex align-items-center justify-content-center gap-2">
+            <i className="fa-solid fa-shield-dog fa-2x text-warning"></i>
+            <div>
+              <strong>ASESORAMIENTO VETERINARIO</strong>
+              <br />
+              Consultá con nuestro equipo profesional
+            </div>
+          </Col>
+        </Row>
+      </Container>
 
-    {/* CAROUSEL */}
-      <section className="carousel-section">
-        <Carousel fade controls={false} indicators={false} interval={3000}>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="https://acdn-us.mitiendanube.com/stores/002/428/163/themes/amazonas/1-slide-1746809340135-8547998733-43943e1e987d4614f61aaaa933f8afac1746809342-1920-1920.png?148558823"
-              alt="First slide"
-            />
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="https://acdn-us.mitiendanube.com/stores/002/428/163/themes/amazonas/1-slide-1728044319277-8878296151-521c6b8ebac3a32296d4c6b84223ade61728044317-1920-1920.png?148558823"
-              alt="Second slide"
-            />
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="https://acdn-us.mitiendanube.com/stores/002/428/163/themes/amazonas/1-slide-1727106214782-3375990206-7e890d772242eb0ff9c2f9cb44ea91511727106211-1920-1920.png?148558823"
-              alt="Third slide"
-            />
-          </Carousel.Item>
-        </Carousel>
-      </section>
-
-
-      {/* WELCOME SECTION */}
-      <section className="hero-welcome-section">
-        <div className="welcome-card">
-          <img src={Wellcome} alt="Welcome" className="welcome-img" />
-          {userName && (
-            <div className="welcome-message">¡Bienvenid@, {userName}!</div>
-          )}
-        </div>
-
-
-      {/* tienda */}
-        <div className="shop-invite">
-          <h2>¡Visitá nuestra tienda para ver todos los productos!</h2>
-          <Link to="/shop">
-            <button className="shop-button">Tienda</button>
-          </Link>
-        </div>
-      </section>
-
-     
-
-      {/* MAIN CONTENT */}
       <main className="main-content">
         <div className="main-wrapper">
           <section className="search-bar">
@@ -179,7 +218,7 @@ export default function Home() {
         </div>
       </main>
 
-      {/* FEATURED PRODUCTS */}
+      {/* Productos destacados */}
       <section className="categories">
         <h3 className="section-title">Algunos de nuestros productos</h3>
         <div className="category-items-grid">
@@ -196,9 +235,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FOOTER */}
       <footer className="main-footer">
-        <p>&copy; 2025 Mayorista. All rights reserved.</p>
+        <p>&copy; 2025 PetCareShop. All rights reserved.</p>
       </footer>
     </div>
   );
