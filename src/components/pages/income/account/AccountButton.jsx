@@ -49,7 +49,7 @@ const AccountButton = () => {
   return (
     <div className="account-container" ref={menuRef}>
       <button className="account-button" onClick={handleClick}>
-        {user ? <FaUserCircle size={28} /> : "Mi cuenta"}
+        {"Mi cuenta"}
       </button>
 
       {open && user && (

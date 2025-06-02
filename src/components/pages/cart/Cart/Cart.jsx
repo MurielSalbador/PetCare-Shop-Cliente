@@ -23,7 +23,7 @@ export default function Cart() {
 
   return (
     <div className="cart">
-      <h3 className="cart-title">Cart:</h3>
+      <h3 className="cart-title">Tu compra:</h3>
       <ul className="cart-list">
         {filteredCart.map((item) => (
           <li key={item.id + item.title} className="cart-item">
@@ -57,11 +57,11 @@ export default function Cart() {
       </ul>
       <div className="cart-summary">
         <div>
-          <p>Total Items:</p>
+          <p>Cantidad</p>
           <p>{totalItems}</p>
         </div>
         <div>
-          <p>Total Price:</p>
+          <p>Precio total</p>
           <p>${totalPrice.toFixed(2)}</p>
         </div>
       </div>

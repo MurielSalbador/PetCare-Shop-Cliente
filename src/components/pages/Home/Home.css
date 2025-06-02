@@ -23,11 +23,25 @@
 }
 
 /* Logo */
-.nav-logo .logo-img {
-  height: 70px;
-  object-fit: contain;
-  list-style: none;
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+  line-height: 1;
 }
+
+.logo-line-1 {
+  font-size: 1.5rem;
+}
+
+.logo-line-2 {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
 
 /* Centro del navbar */
 .nav-center {
@@ -72,7 +86,7 @@
   position: absolute;
   width: 100%;
   height: 2px;
-  background: rgb(146, 48, 29);
+  background: #5e8c61;
   transform: scaleX(0);
   transition: transform 0.4s ease;
   bottom: 0;
@@ -84,8 +98,7 @@
 }
 
 #hire-me {
-  background-color: rgb(187, 78, 42);
-  color: rgb(255, 255, 255);
+  color: #333;
   border-radius: 8px;
   padding: 0.5rem 1rem;
   transition: background-color 0.3s ease;
@@ -93,7 +106,7 @@
 
 #hire-me:hover {
  background-color: transparent;
-  color: #000000;
+ color: #333;
 }
 
 /* Responsive */
@@ -218,8 +231,20 @@
 
 
 /* Estilo del carrusel */
+
+.carousel-text-background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 35%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.884); /* Fondo oscuro semitransparente */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Alinea el texto a la derecha */
+  padding-right: 5%;
+}
 .carousel {
-  border-radius: 20px;
   overflow: hidden;
   background-origin: border-box;
   background-clip: padding-box, border-box;
@@ -236,22 +261,15 @@
 }
 
 .carousel-text-container {
-  position: absolute;
-  top: 30%;
-  right: 5%;
-  transform: translateY(-50%);
-  text-align: right;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 1.5rem;
-  border-radius: 10px;
   color: white;
-  z-index: 10;
+  text-align: right;
   max-width: 350px;
 }
 
+
 .carousel-welcome {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
+  font-size: 3rem;
+  margin-bottom: 1rem;
 }
 
 .carousel-subtitle {
@@ -260,18 +278,21 @@
 }
 
 .shop-button {
-  padding: 0.5rem 1.2rem;
-  font-size: 1rem;
-  background-color: #ff9800;
-  border: none;
-  border-radius: 5px;
-  color: white;
+  padding: 5px;
+  width: 130px;
+  color: whitesmoke;
+  font-weight: 600;
+  background-color: transparent;
+  letter-spacing: 1px;
+  border-radius: 30px;
+  border: 2px solid whitesmoke;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .shop-button:hover {
-  background-color: #e68900;
+  background-color: #67af6b;
+  color: whitesmoke;
 }
 
 
@@ -341,7 +362,7 @@
 
 .input-group button {
   padding: 0.8rem 1.5rem;
-  background-color: #F4A261;
+  background-color: #5e8c61;
   color: white;
   border: none;
   border-radius: 8px;
@@ -349,7 +370,7 @@
 }
 
 .input-group button:hover {
-  background-color: #E76F51;
+  background-color: #a06000;
 }
 
 /* Animación del borde multicolor */
@@ -385,63 +406,79 @@
 
 /* CATEGORIES */
 .categories {
-  padding: 3rem 1rem;
-  background-color: #fffaf4;
+  padding: 40px 20px;
   text-align: center;
 }
 
 .section-title {
-  font-size: 2rem;
-  margin-bottom: 2rem;
   color: #333;
+  font-size: 24px;
+  margin-bottom: 30px;
+  font-weight: 600;
 }
 
-.category-items-grid {
+.category-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
 .category-card {
-  background-color: #fff;
-  border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  padding: 1rem;
-  transition: transform 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
 }
 
 .category-card:hover {
-  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .category-image {
-  width: 120px;
-  height: 120px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
-  margin-bottom: 1rem;
+  margin-bottom: 15px;
 }
 
 .category-title {
-  font-weight: bold;
-  font-size: 1rem;
-  color: #444;
-  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
 }
 
+
 /* FOOTER */
+
+
 .main-footer {
-  background: #FFF5E1;
+  background: whitesmoke;
   padding: 1.5rem;
   text-align: center;
   color: #444;
   font-size: 0.9rem;
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
   margin-top: 3rem;
+}
+
+.footer-logo-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white; /* o el color que uses en el footer */
+  font-weight: bold;
+  line-height: 1;
+}
+
+.footer-logo-text .logo-line-1 {
+  font-size: 1.4rem;
+}
+
+.footer-logo-text .logo-line-2 {
+  font-size: 1rem;
+  font-weight: normal;
 }
 
 

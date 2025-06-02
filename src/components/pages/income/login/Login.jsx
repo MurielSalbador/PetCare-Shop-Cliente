@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { toast } from "react-toastify";
 import BackgroundLogin from "../../../../assets/BackgroundLogin.avif";
-import LoginImg from "../../../../assets/LoginImg.avif";
+import LoginImg from "../../../../assets/LoginImg.jpg";
 import "./Login.css";
 
 function Login() {

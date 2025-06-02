@@ -27,9 +27,6 @@ import ProductList from "./components/pages/addProducts/addProductsList.jsx";
 //protected ProductList
 import ProtectedRoute from './components/protectedRoute/ProtectedRoute.jsx'
 
-//conocenos
-import Conocenos from "./components/pages/conocenos/Conocenos.jsx";
-
 //ordenes guardadas
 import MyOrders from "./components/pages/cart/myOrders/MyOrders.jsx";
 
@@ -64,7 +61,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="/conocenos" element={<Conocenos />} />
           <Route path="/myOrders" element={<MyOrders />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

@@ -16,7 +16,6 @@ import { isAdminOrSuperAdmin } from "../../../utils/auth.js"; // ajustá el path
 import AccountButton from "../income/account/AccountButton.jsx";
 
 //styles
-import Logo from "../../../assets/LogoMayorista-Photoroom.png";
 import "./Shop.css";
 
 const queryClient = new QueryClient();
@@ -34,9 +33,10 @@ const Shop = () => {
     <>
       <header className="main-header">
         <div className="header-actions">
-          <div className="nav-logo">
-            <a href="/" className="logo">
-              <img src={Logo} alt="Logo" className="logo-img" />
+      <div className="nav-logo">
+            <a href="/" className="logo-text">
+              <div className="logo-line-1">PetCare</div>
+              <div className="logo-line-2">Shop</div>
             </a>
           </div>
 
@@ -47,18 +47,13 @@ const Shop = () => {
               </a>
             </li>
             <li>
-              <a href="/conocenos" className="link">
-                <i className="fa-solid fa-info-circle"></i> Conocenos
-              </a>
-            </li>
-            <li>
               <a href="/contact" className="link">
                 <i className="fa-solid fa-envelope"></i> Contactanos
               </a>
             </li>
             <li>
-              <a href="/list" className="link">
-                <i className="fa-solid fa-envelope"></i> Pedidos
+              <a href="/myOrders" className="link">
+                <i className="fa-solid fa-box"></i> Pedidos
               </a>
             </li>
           </ul>

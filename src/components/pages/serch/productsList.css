@@ -21,19 +21,6 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 3px solid transparent;
-  background-image:
-    linear-gradient(#fff, #fff),
-    linear-gradient(270deg, 
-      #35a96f, 
-      #2e7d32, 
-      #4caf50, 
-      #81c784,
-      #00bcd4,
-      #3f51b5,
-      #e91e63,
-      #ff9800,
-      #4caf50
-    );
   background-origin: border-box;
   background-clip: padding-box, border-box;
   animation: animate-border 6s linear infinite;

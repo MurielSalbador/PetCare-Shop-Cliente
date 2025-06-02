@@ -29,15 +29,25 @@
 .back-arrow {
   position: absolute;
   top: 30px;
-  right: 30px;
-  color: white;
+  right: 30px; /* Cambiar de right a left si querés estilo común de volver */
+  background: rgba(0, 0, 0, 0.527); /* Fondo semitransparente para mejor visibilidad */
+  border: none;
+  border-radius: 10%;
+  padding: 20px;
   cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s ease;
+}
+
+.back-arrow:hover {
+  background: rgba(0, 0, 0, 0.747);
 }
 
 .back-arrow i {
-  font-size: 35px;
-  color: #222  ;
+  font-size: 24px;
+  color: white;
 }
+
 
 .register-left {
   flex: 1;
