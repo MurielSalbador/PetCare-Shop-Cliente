@@ -227,76 +227,74 @@
 }
 
 
+/*estilos de hero */
 
-
-
-/* Estilo del carrusel */
-
-.carousel-text-background {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 35%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.884); /* Fondo oscuro semitransparente */
+.home-hero-section {
+  background: linear-gradient(to right, #feffc7, #ffffff);
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 0rem;
   display: flex;
   align-items: center;
-  justify-content: flex-end; /* Alinea el texto a la derecha */
-  padding-right: 5%;
-}
-.carousel {
-  overflow: hidden;
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-  animation: animate-border 8s linear infinite;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+  flex-direction: row;
+   padding-top: 0;
 }
 
-/* Imágenes del carrusel */
-.carousel img {
-  object-fit: cover;
-  height: 420px;
-  width: 100%;
-  transition: transform 1.2s ease;
+.home-hero-content {
+  padding-top: 5.4rem;
+  transform: translateX(-50px);
+  max-width: 600px;
+  z-index: 10;
 }
 
-.carousel-text-container {
-  color: white;
-  text-align: right;
-  max-width: 350px;
+.home-hero-title {
+  font-size: 2.8rem;
+  color: #333;
+  margin-bottom: 1.1rem;
 }
 
 
-.carousel-welcome {
-  font-size: 3rem;
+.home-hero-welcome {
+  font-size: 2.2rem;
+  color: #5e8c61;
   margin-bottom: 1rem;
 }
 
-.carousel-subtitle {
+.home-hero-content p {
   font-size: 1.2rem;
-  margin-bottom: 1rem;
+  line-height: 1.6;
 }
 
-.shop-button {
-  padding: 5px;
-  width: 130px;
-  color: whitesmoke;
+.home-hero-button {
+  padding: 10px 0;
+  width: 160px;
+  color: #5e8c61;
   font-weight: 600;
+  font-size: 1.1rem;
   background-color: transparent;
-  letter-spacing: 1px;
+  letter-spacing: 0.1px;
   border-radius: 30px;
-  border: 2px solid whitesmoke;
+  border: 2px solid #5e8c61;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-top: 1rem;
 }
 
-.shop-button:hover {
-  background-color: #67af6b;
+.home-hero-button:hover {
+  background-color: #5e8c61;
   color: whitesmoke;
 }
 
+.home-hero-image {
+  max-width: none;
+  width: 70vw;
+  height: auto;
+  margin: 0;
+  object-fit: cover;
+  align-self: flex-start;
+}
 
-/* Animación de borde (compartida con otros componentes si querés) */
 @keyframes animate-border {
   0% {
     background-position: 0% 50%;
@@ -309,16 +307,12 @@
   }
 }
 
-/* Responsivo */
+
 @media (max-width: 768px) {
   .carousel img {
     height: 280px;
   }
 }
-
-
-
-
 
 
 /* Main content */
@@ -467,7 +461,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: white; /* o el color que uses en el footer */
+  color: white;
   font-weight: bold;
   line-height: 1;
 }

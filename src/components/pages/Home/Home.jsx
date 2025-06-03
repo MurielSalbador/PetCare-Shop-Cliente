@@ -3,10 +3,7 @@ import { useProducts } from "../../../../../PetCare-Shop-Server/src/hooks/serch/
 import { Products } from "../serch/productsList.jsx";
 import { Link } from "react-router-dom";
 import "./Home.css";
-import Carousel from "react-bootstrap/Carousel";
-import Banner1 from "../../../assets/banner1.png"
-import Banner2 from "../../../assets/banner2.png"
-import Banner3 from "../../../assets/banner3.png"
+import cuteDog from "../../../assets/cuteDog2.png"
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import { FaGithub, FaInstagram, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
@@ -74,13 +71,20 @@ export default function Home() {
     <div className="home-container">
       <header className="main-header">
         <div className="header-actions">
-        <div className="nav-logo">
-            <a href="/" className="logo-text">
+      <div className="nav-logo">
+            <a href="/" className="logo-text"
+                 data-aos="fade-left"
+                  data-aos-duration="600"
+                  data-aos-delay="200">
               <div className="logo-line-1">PetCare</div>
               <div className="logo-line-2">Shop</div>
             </a>
           </div>
-          <ul className="nav-center">
+          <ul className="nav-center"
+              data-aos="fade-right"
+              data-aos-duration="600"
+              data-aos-delay="200"
+              >
             <li>
               <a href="/" className="link">
                 <i className="fa-solid fa-house"></i> Home
@@ -106,62 +110,40 @@ export default function Home() {
             </li>
             <li>
               <div className="link" id="hire-me">
-                <i className="fa-regular fa-user"></i><AccountButton/>
+                <i className="fa-regular fa-user"></i>
+                <AccountButton />
               </div>
             </li>
           </ul>
         </div>
       </header>
-      <Carousel fade controls={false} indicators={false} interval={6000}>
-<Carousel.Item>
-  <img className="d-block w-100" src={Banner3} alt="First slide" />
-  <div className="carousel-text-background">
-    <div className="carousel-text-container">
-      {userName && (
-        <h2 className="carousel-welcome">¡Bienvenid@, {userName}!</h2>
-      )}
-      <p className="carousel-subtitle">
-        ¡Visitá nuestra tienda para ver todos los productos!
-      </p>
-      <Link to="/shop">
-        <button className="shop-button">Tienda</button>
-      </Link>
-    </div>
+      
+<section
+  className="home-hero-section"
+  data-aos="fade-right"
+  data-aos-duration="700"
+  data-aos-delay="200"
+>
+ <img
+  src={cuteDog}
+  alt="Mascota"
+  className="home-hero-image"
+  style={{ transform: 'scaleX(-1)' }}
+  data-aos="fade-right"
+  data-aos-duration="800"
+/>
+  <div className="home-hero-content">
+    {userName && <h2 className="home-hero-welcome">¡Bienvenid@, {userName}!</h2>}
+    <h1 className="home-hero-title">Descubrí lo que tenemos para tu mascota</h1>
+    <p>
+      Productos seleccionados con amor para que tu mascota esté feliz, sana y bien cuidada.
+    </p>
+    <p>Porque sabemos que no son solo mascotas, son parte de tu familia.</p>
+    <Link to="/shop">
+      <button className="home-hero-button">Ir a la tienda</button>
+    </Link>
   </div>
-</Carousel.Item>
-<Carousel.Item>
-  <img className="d-block w-100" src={Banner2} alt="First slide" />
-  <div className="carousel-text-background">
-    <div className="carousel-text-container">
-      {userName && (
-        <h2 className="carousel-welcome">¡Bienvenid@, {userName}!</h2>
-      )}
-      <p className="carousel-subtitle">
-        ¡Visitá nuestra tienda para ver todos los productos!
-      </p>
-      <Link to="/shop">
-        <button className="shop-button">Tienda</button>
-      </Link>
-    </div>
-  </div>
-</Carousel.Item>
-<Carousel.Item>
-  <img className="d-block w-100" src={Banner1} alt="First slide" />
-  <div className="carousel-text-background">
-    <div className="carousel-text-container">
-      {userName && (
-        <h2 className="carousel-welcome">¡Bienvenid@, {userName}!</h2>
-      )}
-      <p className="carousel-subtitle">
-        ¡Visitá nuestra tienda para ver todos los productos!
-      </p>
-      <Link to="/shop">
-        <button className="shop-button">Tienda</button>
-      </Link>
-    </div>
-  </div>
-</Carousel.Item>
-      </Carousel>
+</section>
 
       <Container fluid className="bg-light py-3">
         <Row className="text-center justify-content-center align-items-center">
@@ -215,49 +197,49 @@ export default function Home() {
 
       <section className="feature-showcase py-5 bg-light">
   <Container>
-    {/* Parte de las 3 imágenes con títulos */}
-    <Row className="mb-5 text-center">
-      <Col md={4} className="mb-4">
-        <img src="https://img.aosomcdn.com/thumbnail/100/n0/product/2023/11/14/PaT42b18bccca1f0c.jpg.webp" alt="Cuidado mascota" className="img-fluid rounded mb-3" />
-        <h5>Proper Pet Care</h5>
-        <p>Tenemos los mejores productos para tu mascota. ¡Visitá nuestra tienda hoy mismo!</p>
-      </Col>
-      <Col md={4} className="mb-4">
-        <img src="https://m.media-amazon.com/images/I/81HYU4s7e5L.jpg" alt="Accesorios" className="img-fluid rounded mb-3" />
-        <h5>Pet Accessories</h5>
-        <p>Desde comederos hasta juguetes. Todo lo que tu mascota necesita, en un solo lugar.</p>
-      </Col>
-      <Col md={4} className="mb-4">
-        <img src="https://www.eastwestbasics.com/wp-content/uploads/Pet-Products.jpg" alt="Veterinaria" className="img-fluid rounded mb-3" />
-        <h5>Productos naturales</h5>
-        <p> Sin químicos ni aditivos. Todo lo mejor para su salud.</p>
-      </Col>
-    </Row>
+  {/* Parte de las 3 imágenes con títulos */}
+  <Row className="mb-5 text-center">
+    <Col md={4} className="mb-4" data-aos="fade-up" data-aos-duration="800">
+      <img src="https://img.aosomcdn.com/thumbnail/100/n0/product/2023/11/14/PaT42b18bccca1f0c.jpg.webp" alt="Cuidado mascota" className="img-fluid rounded mb-3" />
+      <h5>Proper Pet Care</h5>
+      <p>Tenemos los mejores productos para tu mascota. ¡Visitá nuestra tienda hoy mismo!</p>
+    </Col>
+    <Col md={4} className="mb-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+      <img src="https://m.media-amazon.com/images/I/81HYU4s7e5L.jpg" alt="Accesorios" className="img-fluid rounded mb-3" />
+      <h5>Pet Accessories</h5>
+      <p>Desde comederos hasta juguetes. Todo lo que tu mascota necesita, en un solo lugar.</p>
+    </Col>
+    <Col md={4} className="mb-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+      <img src="https://www.eastwestbasics.com/wp-content/uploads/Pet-Products.jpg" alt="Veterinaria" className="img-fluid rounded mb-3" />
+      <h5>Productos naturales</h5>
+      <p>Sin químicos ni aditivos. Todo lo mejor para su salud.</p>
+    </Col>
+  </Row>
 
-    {/* Parte de beneficios con íconos */}
-    <Row className="text-center">
-      <Col md={3}>
-        <i className="fa-solid fa-headset fa-2x mb-2 text-dark"></i>
-        <h6>24/7 Friendly Support</h6>
-        <p>Estamos para ayudarte todos los días de la semana.</p>
-      </Col>
-      <Col md={3}>
-        <i className="fa-solid fa-truck-fast fa-2x mb-2 text-dark"></i>
-        <h6>Free Shipping</h6>
-        <p>Envío gratuito a partir de $50.000 ARS.</p>
-      </Col>
-      <Col md={3}>
-        <i className="fa-solid fa-rotate-left fa-2x mb-2 text-dark"></i>
-        <h6>7 Days Easy Return</h6>
-        <p>Devolución inmediata en caso de fallas.</p>
-      </Col>
-      <Col md={3}>
-        <i className="fa-solid fa-paw fa-2x mb-2 text-dark"></i>
-        <h6>Quality Guaranteed</h6>
-        <p>Si no estás conforme, te devolvemos tu dinero.</p>
-      </Col>
-    </Row>
-  </Container>
+  {/* Parte de beneficios con íconos */}
+  <Row className="text-center">
+    <Col md={3} data-aos="zoom-in" data-aos-duration="700">
+      <i className="fa-solid fa-headset fa-2x mb-2 text-dark"></i>
+      <h6>Soporte disponible 24/7</h6>
+      <p>Estamos para ayudarte todos los días de la semana.</p>
+    </Col>
+    <Col md={3} data-aos="zoom-in" data-aos-duration="700" data-aos-delay="100">
+      <i className="fa-solid fa-truck-fast fa-2x mb-2 text-dark"></i>
+      <h6>Envio sin cargo!</h6>
+      <p>Envío gratuito a partir de $30.000 ARS.</p>
+    </Col>
+    <Col md={3} data-aos="zoom-in" data-aos-duration="700" data-aos-delay="200">
+      <i className="fa-solid fa-rotate-left fa-2x mb-2 text-dark"></i>
+      <h6>Devolucion en 7 días</h6>
+      <p>Devolución inmediata en caso de fallas.</p>
+    </Col>
+    <Col md={3} data-aos="zoom-in" data-aos-duration="700" data-aos-delay="300">
+      <i className="fa-solid fa-paw fa-2x mb-2 text-dark"></i>
+      <h6>calidad garantizada</h6>
+      <p>Si no estás conforme, te devolvemos tu dinero.</p>
+    </Col>
+  </Row>
+</Container>
 </section>
 
     {/* Productos destacados */}

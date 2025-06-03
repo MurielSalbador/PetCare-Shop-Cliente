@@ -42,12 +42,19 @@ const ContactForm = () => {
       <header className="main-header">
         <div className="header-actions">
       <div className="nav-logo">
-            <a href="/" className="logo-text">
+            <a href="/" className="logo-text"
+                 data-aos="fade-left"
+                  data-aos-duration="600"
+                  data-aos-delay="200">
               <div className="logo-line-1">PetCare</div>
               <div className="logo-line-2">Shop</div>
             </a>
           </div>
-          <ul className="nav-center">
+          <ul className="nav-center"
+              data-aos="fade-right"
+              data-aos-duration="600"
+              data-aos-delay="200"
+              >
             <li>
               <a href="/" className="link">
                 <i className="fa-solid fa-house"></i> Home
@@ -81,7 +88,10 @@ const ContactForm = () => {
         </div>
       </header>
 
-      <section className="hero-section">
+      <section className="hero-section"      
+      data-aos="fade-right"
+      data-aos-duration="600"
+      data-aos-delay="200">
   <div className="hero-content">
     <h1>Cuidamos lo que más querés</h1>
     <p>
@@ -103,56 +113,66 @@ son parte de tu familia.</p>
   <img src={cuteDog} alt="Perro" className="hero-dog" />
   <div className="hero-bottom-mask"></div>
 </section>
-      {/* ========== CARDS INFORMATIVAS ========== */}
-      <section className="contact-info-cards">
-        <div className="card">
-          <div className="card-icon">
-            <i className="fa-solid fa-paw"></i>
-          </div>
-          <h3>Quiénes Somos</h3>
-          <p>Somos amantes de los animales, dedicados a su bienestar y felicidad.</p>
-        </div>
+    
+    <section className="contact-info-cards" data-aos-delay="100">
+  <div className="card" data-aos="fade-up">
+    <div className="card-icon">
+      <i className="fa-solid fa-paw"></i>
+    </div>
+    <h3>Quiénes Somos</h3>
+    <p>Somos amantes de los animales, dedicados a su bienestar y felicidad.</p>
+  </div>
 
-        <div className="card">
-          <div className="card-icon">
-            <i className="fa-solid fa-handshake-simple"></i>
-          </div>
-          <h3>Cómo Trabajamos</h3>
-          <p>Brindamos atención personalizada para cada necesidad de tu mascota.</p>
-        </div>
+  <div className="card" data-aos="fade-up" data-aos-delay="300">
+    <div className="card-icon">
+      <i className="fa-solid fa-handshake-simple"></i>
+    </div>
+    <h3>Cómo Trabajamos</h3>
+    <p>Brindamos atención personalizada para cada necesidad de tu mascota.</p>
+  </div>
 
-        <div className="card">
-          <div className="card-icon">
-            <i className="fa-solid fa-award"></i>
-          </div>
-          <h3>Mejores Servicios</h3>
-          <p>Calidad, confianza y compromiso en cada producto y atención.</p>
-        </div>
-      </section>
+  <div className="card" data-aos="fade-up" data-aos-delay="500">
+    <div className="card-icon">
+      <i className="fa-solid fa-award"></i>
+    </div>
+    <h3>Mejores Servicios</h3>
+    <p>Calidad, confianza y compromiso en cada producto y atención.</p>
+  </div>
+</section>
 
        {/* Acordeón de Preguntas Frecuentes */}
-    <section className="faq-section" id="faq">
+  <section
+  className="faq-section"
+  id="faq"
+  data-aos="fade-up"        
+  data-aos-duration="1000"   
+  data-aos-delay="200"       
+>
   <h2 className="title">Preguntas Frecuentes</h2>
-        <details>
-          <summary>¿Hacen envíos a domicilio?</summary>
-          <p>Sí, realizamos envíos en Rosario y alrededores en el mismo día.</p>
-        </details>
-        <details>
-          <summary>¿Cómo puedo hacer un pedido?</summary>
-          <p>Podés hacer tu pedido por la tienda online o vía WhatsApp.</p>
-        </details>
-        <details>
-          <summary>¿Qué medios de pago aceptan?</summary>
-          <p>Aceptamos transferencias, tarjetas de débito/crédito y efectivo.</p>
-        </details>
-        <details>
-          <summary>¿Tienen atención veterinaria?</summary>
-          <p>No brindamos atención veterinaria, pero trabajamos con profesionales aliados.</p>
-        </details>
-      </section>
+  <details data-aos="fade-right" data-aos-delay="100">
+    <summary>¿Hacen envíos a domicilio?</summary>
+    <p>Sí, realizamos envíos en Rosario y alrededores en el mismo día.</p>
+  </details>
+  <details data-aos="fade-left" data-aos-delay="400">
+    <summary>¿Cómo puedo hacer un pedido?</summary>
+    <p>Podés hacer tu pedido por la tienda online o vía WhatsApp.</p>
+  </details>
+  <details data-aos="fade-right" data-aos-delay="400">
+    <summary>¿Qué medios de pago aceptan?</summary>
+    <p>Aceptamos transferencias, tarjetas de débito/crédito y efectivo.</p>
+  </details>
+  <details data-aos="fade-left" data-aos-delay="100">
+    <summary>¿Tienen atención veterinaria?</summary>
+    <p>No brindamos atención veterinaria, pero trabajamos con profesionales aliados.</p>
+  </details>
+</section>
 
       {/* Ubicación y Horarios */}
-      <section className="location-section">
+      <section
+          className="location-section"
+          data-aos="fade-down"
+          data-aos-duration="1000"
+        >
         <h2 className="title">¿Dónde Estamos?</h2>
         <p><strong>Dirección:</strong> Calle 1234, Rosario, Santa Fe</p>
         <p><strong>Horarios:</strong> Lunes a Sábado de 9:00 a 18:00 hs</p>

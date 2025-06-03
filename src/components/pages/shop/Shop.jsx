@@ -34,13 +34,19 @@ const Shop = () => {
       <header className="main-header">
         <div className="header-actions">
       <div className="nav-logo">
-            <a href="/" className="logo-text">
+            <a href="/" className="logo-text"
+                 data-aos="fade-left"
+                  data-aos-duration="600"
+                  data-aos-delay="200">
               <div className="logo-line-1">PetCare</div>
               <div className="logo-line-2">Shop</div>
             </a>
           </div>
-
-          <ul className="nav-center">
+          <ul className="nav-center"
+              data-aos="fade-right"
+              data-aos-duration="600"
+              data-aos-delay="200"
+              >
             <li>
               <a href="/" className="link">
                 <i className="fa-solid fa-house"></i> Home
@@ -64,9 +70,10 @@ const Shop = () => {
                 <i className="fa-solid fa-cart-shopping"></i> Mi carrito
               </a>
             </li>
-             <li>
+            <li>
               <div className="link" id="hire-me">
-                <i className="fa-regular fa-user"></i><AccountButton />
+                <i className="fa-regular fa-user"></i>
+                <AccountButton />
               </div>
             </li>
           </ul>
@@ -77,9 +84,7 @@ const Shop = () => {
         <FiltersProvider>
           <main className="main">
             <div className="container">
-              <h1 className="page-title"> Product List</h1>
-              <Filters />
-
+        
               {/* Aquí va el botón Gestión de Productos */}
               {isAdminOrSuperAdmin() && (
                 <div className="classButtonAdd">
@@ -92,6 +97,9 @@ const Shop = () => {
                   <ProductList />
                 </div>
                 <div className="cart">
+                     <div>
+                    <Filters />
+                  </div>
                   <Cart />
                   <div className="classButton">
                     <Link to="/finish">Finalizar tu compra</Link>

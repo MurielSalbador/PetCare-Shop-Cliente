@@ -1,15 +1,16 @@
 /* Contenedor general flexible, limpio y espacioso */
 .content {
   display: flex;
-  gap: 1.5rem;
-  align-items: stretch;
-  padding: 2rem 1rem;
+  gap: 2rem;
+  align-items: flex-start;
+  padding: 2rem 2rem;
   flex-wrap: wrap;
-  justify-content: center;
-  background-color: #0a2e08d7; /* verde oscuro más suave */
-  color: #000000; /* texto claro y suave */
+  background-color: #f4f4f4;
+  color: #000000;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  justify-content: flex-start;
 }
+
 
 /* Productos ocupan más espacio */
 .products-wrapper {
@@ -82,30 +83,17 @@
 
 /* Carrito con colores suaves y menos saturados */
 .cart {
-  margin-top: 50px;
-  flex: 1.5 1 300px;
   padding: 1.2rem;
-  border-radius: 10px;
+  padding-top: 1rem;
   box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-  min-width: 280px;
-  max-width: 400px;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  max-height: 600px;
+  max-height: 1500px;
   background-color: #ffffff;
   color: #000000;
   font-weight: 500;
-}
-
-/* Título página */
-.page-title {
-  color: #242424;
-  margin-top: 50px;
-  text-align: center;
-  font-weight: 600;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 1.8rem;
 }
 
 /* Grid de productos simplificado */
@@ -168,7 +156,7 @@
 /* Botón agregar, más plano y minimalista */
 .add-btn {
   margin-top: auto;
-  background-color: rgb(146, 48, 29);
+  background-color: #5e8c61;
   color: #ffffff;
   border: none;
   padding: 0.5rem 1rem;
@@ -187,29 +175,27 @@
 
 /* Filtros minimalistas */
 .filters-box {
+  flex: 1 1 220px;
+  background-color: #ffffff;
+  padding: 1.5rem 1rem;
+  color: #1d1d1d;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
-  background-color: #0a2e08d7; /* verde oscuro suave */
-  padding: 1.2rem 1.5rem;
-  margin: 2rem auto;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  max-width: 900px;
-  color: #000000;
-  font-weight: 500;
+  flex-direction: column;
+  gap: 1.2rem;
+  height: fit-content;
 }
 
 /* Etiquetas filtros */
 .filter-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #333;
   display: flex;
   flex-direction: column;
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: #d6e2c7;
-  gap: 0.4rem;
+}
+
+.filter-label input {
+  margin-top: 0.4rem;
 }
 
 /* Inputs filtros */
@@ -236,8 +222,8 @@
 .filter-range-text {
   width: 100%;
   text-align: center;
-  font-size: 0.85rem;
-  color: #bfcbb3;
+  font-size: 0.8rem;
+  color: #444;
   margin-top: 0.4rem;
 }
 
@@ -301,7 +287,8 @@
 }
 
 .item-controls button {
-  background-color: rgb(146, 48, 29);
+  background-color: #5e8c61;
+  color: whitesmoke;
   border: none;
   border-radius: 5px;
   padding: 5px 12px;
@@ -311,13 +298,12 @@
 }
 
 .item-controls button:hover {
-  background-color: rgb(182, 73, 52);
-  color: #f0f0f0;
+  background-color: #73bb79;
 }
 
 .item-controls span {
   font-weight: 600;
-  color: #0a0a0a;
+  color: whitesmoke;
   min-width: 25px;
   text-align: center;
 }
@@ -354,7 +340,7 @@
 .classButton {
   display: flex;
   justify-content: space-between;
-  margin-top: 1.8rem;
+  padding-bottom: 2rem;
   gap: 1rem;
 }
 
@@ -363,8 +349,9 @@
   flex: 1;
   text-align: center;
   padding: 0.7rem 0;
-  background-color: rgb(146, 48, 29);
-  color: #000000;
+  background-color: rgb(243, 84, 84);
+  color: whitesmoke;
+  letter-spacing: 1px;
   border-radius: 10px;
   font-weight: 700;
   text-decoration: none;
@@ -374,8 +361,7 @@
 }
 
 .classButton a:hover {
-  background-color: rgb(85, 24, 12);
-  color: #f0f0f0;
+  background-color:  rgb(214, 27, 27);
 }
 
 .classButtonAdd {
@@ -386,74 +372,22 @@
 .classButtonAdd a {
   display: inline-block;
   padding: 10px 25px;
-  color: rgb(0, 0, 0);
+  color: #5e8c61;
+  background-color: transparent;
   text-decoration: none;
   border-radius: 50px;
   font-weight: 600;
   transition: background-color 0.3s ease;
-  
-  /* Borde animado */
-  border: 3px solid;
-  border-image-slice: 1;
-  border-width: 3px;
-  border-image-source: linear-gradient(270deg, #32CD32, #00FF00, #228B22, #7CFC00, #32CD32);
-  animation: borderShift 3s linear infinite;
-  position: relative;
-}
-/* Animación para el borde */
-@keyframes borderShift {
-  0% {
-    border-image-source: linear-gradient(270deg, #32CD32, #00FF00, #228B22, #7CFC00, #32CD32);
-  }
-  100% {
-    border-image-source: linear-gradient(630deg, #32CD32, #00FF00, #228B22, #7CFC00, #32CD32);
-  }
+  border: #5e8c61 3px solid;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .content {
-    flex-direction: column;
-    padding: 1rem 0.5rem;
-  }
-
-  .products-wrapper, .cart {
-    min-width: 100%;
-    max-width: 100%;
-  }
-
-  .nav-center {
-    margin-left: 0;
-    justify-content: center;
-  }
-
-  .nav-right {
-    justify-content: center;
-  }
+.classButtonAdd a:hover{
+  background-color: #5e8c61;
+  border: #5e8c61 3px solid;
+  color: whitesmoke;
 }
 
-@media (max-width: 600px) {
-  .product-grid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    padding: 1rem 0;
-    gap: 1rem;
-  }
 
-  .product-card {
-    padding: 0.7rem 1rem;
-  }
-
-  .product-img {
-    max-height: 130px;
-  }
-
-  .add-btn {
-    padding: 0.4rem;
-    font-size: 0.9rem;
-  }
-
-  .filters-box {
-    gap: 1rem;
-    padding: 1rem;
-  }
+.cart-title{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

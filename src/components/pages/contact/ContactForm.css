@@ -4,10 +4,10 @@
 /* Contenedor principal de imagen + formulario */
 
 .hero-section {
-  background-color: #feffdf;
+ background: linear-gradient(to left, #feffc7, #ffffff);
   position: relative;
   overflow: hidden;
-  padding: 6rem 5rem;
+  padding: 5.85rem 5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;

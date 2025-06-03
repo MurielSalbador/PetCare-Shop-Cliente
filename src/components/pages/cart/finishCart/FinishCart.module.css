@@ -53,7 +53,7 @@
 }
 
 .checkoutForm button {
-  background-color: #25d366;
+  background-color: #5e8c61;
   color: white;
   padding: 0.9rem 1.5rem;
   font-size: 1.1rem;
@@ -64,7 +64,7 @@
 }
 
 .checkoutForm button:hover {
-  background-color: #1ebe5d;
+  background-color: #73bb79;
 }
 
 .checkoutSummary {
@@ -107,7 +107,7 @@
 }
 
 .contactButton {
-  width: 110px; /* Fijo y compacto */
+  width: 110px;
   padding: 0.6rem 0.3rem;
   font-size: 0.85rem;
 }

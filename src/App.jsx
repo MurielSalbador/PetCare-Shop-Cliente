@@ -1,49 +1,31 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
-//pagina principal
 import Home from "./components/pages/Home/Home.jsx";
-
-//login
 import Login from "./components/pages/income/login/Login.jsx";
-
-//register
 import Register from "./components/pages/income/register/Register.jsx";
-
-//tienda de productos
 import Shop from "./components/pages/shop/Shop.jsx";
-
-//carrito con localstorage para que se guarde lo elegido
 import CartHeader from "./components/pages/cart/cartHeader/CartHeader.jsx";
-
-//para mandar un email
 import ContactForm from "./components/pages/contact/ContactForm.jsx";
-
-//esto es para mandar el mensaje
 import FinishCart from "./components/pages/cart/finishCart/FinishCart.jsx";
-
-//crud
 import ProductList from "./components/pages/addProducts/addProductsList.jsx";
-
-//protected ProductList
-import ProtectedRoute from './components/protectedRoute/ProtectedRoute.jsx'
-
-//ordenes guardadas
+import ProtectedRoute from './components/protectedRoute/ProtectedRoute.jsx';
 import MyOrders from "./components/pages/cart/myOrders/MyOrders.jsx";
+import Orders from './components/pages/OrdersClients/Orders.jsx';
 
-//mostras pedidos
-import Orders from './components/pages/OrdersClients/Orders.jsx'
-
-//provider
-// import  {ModeContext}  from "./components/context/ModeContext.jsx";
-
-
-//css
 import "./App.css";
 
 function App() {
-  return (
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+    });
+  }, []);
 
-    // <ModeContext.Provider>
+  return (
     <Router>
       <div className="App">
         <Routes>
@@ -67,7 +49,6 @@ function App() {
         </Routes>
       </div>
     </Router>
-    // </ModeContext.Provider>
   );
 }
 
