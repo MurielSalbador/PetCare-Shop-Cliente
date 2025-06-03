@@ -47,11 +47,23 @@ function Login() {
 
         navigate("/");
       } else {
-        toast.error(data.error || "❌ Contraseña o Email incorrecto", {
-          position: "top-right",
-          autoClose: 3000,
-          theme: "colored",
-        });
+        console.log(res.status, data.error);
+        if (
+          res.status === 403 &&
+          data.error === "Este usuario está bloqueado."
+        ) {
+          toast.error("🚫 Tu cuenta ha sido bloqueada por un administrador.", {
+            position: "top-right",
+            autoClose: 4000,
+            theme: "colored",
+          });
+        } else {
+          toast.error(data.error || "❌ Contraseña o Email incorrecto", {
+            position: "top-right",
+            autoClose: 3000,
+            theme: "colored",
+          });
+        }
       }
     } catch (err) {
       toast.error("⚠️ Error en el servidor", {

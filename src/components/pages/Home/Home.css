@@ -475,6 +475,27 @@
   font-weight: normal;
 }
 
+.see-all-button-container {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.see-all-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #ffc107;
+  color: #000;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.see-all-button:hover {
+  background-color: #e0a800;
+}
+
+
 
 @media (max-width: 768px) {
   .header-actions {

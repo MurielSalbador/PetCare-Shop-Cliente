@@ -1,7 +1,6 @@
 // src/api/fakeStoreApi.js
 
 export async function getAllProducts(filters = {}) {
-  // Construir query string para filtros
   const query = new URLSearchParams();
 
   if (filters.brand && filters.brand !== "all") {
@@ -19,6 +18,15 @@ export async function getAllProducts(filters = {}) {
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error("Error al obtener productos");
+  }
+  return response.json();
+}
+
+// ✅ NUEVA función para obtener un producto por ID
+export async function getProductById(id) {
+  const response = await fetch(`http://localhost:3000/api/products/${id}`);
+  if (!response.ok) {
+    throw new Error("Error al obtener el producto");
   }
   return response.json();
 }

@@ -9,8 +9,7 @@ import Cart from "../cart/Cart/Cart.jsx";
 import Filters from "../cart/Cart/Filters.jsx";
 
 //protected
-import { isAdminOrSuperAdmin } from "../../../utils/auth.js"; // ajustá el path si es necesario
-
+import { isAdminOrSuperAdmin } from "../../../utils/auth.js";
 
 //account
 import AccountButton from "../income/account/AccountButton.jsx";
@@ -33,20 +32,20 @@ const Shop = () => {
     <>
       <header className="main-header">
         <div className="header-actions">
-      <div className="nav-logo">
-            <a href="/" className="logo-text"
-                 data-aos="fade-left"
-                  data-aos-duration="600"
-                  data-aos-delay="200">
-              <div className="logo-line-1">PetCare</div>
-              <div className="logo-line-2">Shop</div>
-            </a>
-          </div>
-          <ul className="nav-center"
-              data-aos="fade-right"
+          <div className="nav-logo">
+            <a
+              href="/"
+              className="logo-text"
+              data-aos="fade-left"
               data-aos-duration="600"
               data-aos-delay="200"
-              >
+            >
+              <div className="logo-line-1">RubioHnos</div>
+              <div className="logo-line-2">mayorista</div>
+            </a>
+          </div>
+
+          <ul className="nav-center">
             <li>
               <a href="/" className="link">
                 <i className="fa-solid fa-house"></i> Home
@@ -59,9 +58,16 @@ const Shop = () => {
             </li>
             <li>
               <a href="/myOrders" className="link">
-                <i className="fa-solid fa-box"></i> Pedidos
+                <i className="fa-solid fa-envelope"></i> Pedidos
               </a>
             </li>
+            {isAdminOrSuperAdmin() && (
+              <li>
+                <a href="/httpClients" className="link">
+                  <i className="fa-solid fa-envelope"></i> Clientes
+                </a>
+              </li>
+            )}
           </ul>
 
           <ul className="nav-right">
@@ -71,8 +77,7 @@ const Shop = () => {
               </a>
             </li>
             <li>
-              <div className="link" id="hire-me">
-                <i className="fa-regular fa-user"></i>
+              <div className="link">
                 <AccountButton />
               </div>
             </li>
@@ -84,7 +89,6 @@ const Shop = () => {
         <FiltersProvider>
           <main className="main">
             <div className="container">
-        
               {/* Aquí va el botón Gestión de Productos */}
               {isAdminOrSuperAdmin() && (
                 <div className="classButtonAdd">
@@ -97,7 +101,7 @@ const Shop = () => {
                   <ProductList />
                 </div>
                 <div className="cart">
-                     <div>
+                  <div>
                     <Filters />
                   </div>
                   <Cart />

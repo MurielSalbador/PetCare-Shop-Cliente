@@ -2,6 +2,9 @@ import { useShallow } from "zustand/shallow";
 import { useCart } from "../../../../store.js";
 import { useFilters } from "../../../../hooks/useFilters.js";
 
+//incremente el stock del producto al eliminarlo del carrito
+import { useQueryClient } from "@tanstack/react-query";
+
 export default function Cart() {
   const { count, cart, addCart, removeCart } = useCart(
     useShallow((state) => ({
@@ -12,7 +15,7 @@ export default function Cart() {
     }))
   );
 
-  const { filterProducts } = useFilters(); // aplicamos los filtros al carrito
+  const { filters, filterProducts } = useFilters();
   const filteredCart = filterProducts(cart);
 
   const totalItems = filteredCart.reduce((sum, item) => sum + item.quantity, 0);
@@ -21,9 +24,12 @@ export default function Cart() {
     0
   );
 
+  // Para actualizar el stock de los productos al eliminar del carrito
+  const queryClient = useQueryClient();
+
   return (
     <div className="cart">
-      <h3 className="cart-title">Tu compra:</h3>
+      <h3 className="cart-title">Cart:</h3>
       <ul className="cart-list">
         {filteredCart.map((item) => (
           <li key={item.id + item.title} className="cart-item">
@@ -33,7 +39,23 @@ export default function Cart() {
                 : item.title}
             </span>
             <div className="item-controls">
-              <button onClick={() => removeCart(item.id)}>-</button>
+              <button
+                onClick={() => {
+                  removeCart(item.id);
+
+                  queryClient.setQueryData(
+                    ["products", filters],
+                    (oldProducts) => {
+                      return oldProducts.map((p) =>
+                        p.id === item.id ? { ...p, stock: p.stock + 1 } : p
+                      );
+                    }
+                  );
+                }}
+              >
+                -
+              </button>
+
               <span>{item.quantity}</span>
               <button
                 onClick={() => {
@@ -57,11 +79,11 @@ export default function Cart() {
       </ul>
       <div className="cart-summary">
         <div>
-          <p>Cantidad</p>
+          <p>Total Items:</p>
           <p>{totalItems}</p>
         </div>
         <div>
-          <p>Precio total</p>
+          <p>Total Price:</p>
           <p>${totalPrice.toFixed(2)}</p>
         </div>
       </div>
