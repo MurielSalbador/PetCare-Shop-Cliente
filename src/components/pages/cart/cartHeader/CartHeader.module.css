@@ -1,6 +1,6 @@
 .main {
   min-height: 100vh;
-  background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+  background: linear-gradient(70deg, rgb(17, 163, 231), rgb(233, 115, 164));
   display: flex;
   justify-content: center;
   align-items: center;

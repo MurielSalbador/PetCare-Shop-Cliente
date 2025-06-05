@@ -220,20 +220,16 @@ const addToCart = (product) => {
   return (
     <>
       <main className={styles.finishCart}>
-        <div className={styles.container}>
+        <div className={styles.container}
+              data-aos="zoom-in"
+              data-aos-duration="600"
+              data-aos-delay="200">
           <div className={styles.contactClose}>
             <CloseButton
               aria-label="Cerrar formulario"
               onClick={() => navigate("/")}
             />
           </div>
-
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-            alt="WhatsApp Logo"
-            className={styles.whatsappLogo}
-          />
-
           <h1>Finalizar Compra</h1>
 
           <form className={styles.checkoutForm} onSubmit={handleSubmit}>

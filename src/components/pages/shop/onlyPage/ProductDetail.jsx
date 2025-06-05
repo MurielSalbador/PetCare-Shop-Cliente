@@ -44,8 +44,8 @@ export default function ProductDetail() {
               data-aos-duration="600"
               data-aos-delay="200"
             >
-              <div className="logo-line-1">RubioHnos</div>
-              <div className="logo-line-2">mayorista</div>
+              <div className="logo-line-1">PetCare</div>
+              <div className="logo-line-2">shop</div>
             </a>
           </div>
 
@@ -68,7 +68,7 @@ export default function ProductDetail() {
            {isAdminOrSuperAdmin() && (
             <li>
               <a href="/httpClients" className="link">
-                <i className="fa-solid fa-envelope"></i> Clientes
+                <i className="fa-solid fa-envelope"></i> Usuarios
               </a>
             </li>
             )}
@@ -89,14 +89,16 @@ export default function ProductDetail() {
         </div>
       </header>
 
-    <div className="product-detail">
+    <div className="product-detail"
+                  data-aos="zoom-in"
+              data-aos-duration="600"
+              data-aos-delay="200">
       <img src={product.imageUrl} alt={product.title} />
       <div className="info">
         <h2>{product.title}</h2>
         <p><i className="fas fa-tag"></i> <strong>Marca:</strong> {product.brand}</p>
         <p><i className="fas fa-dollar-sign"></i> <strong>Precio:</strong> ${product.price}</p>
         <p><i className="fas fa-box"></i> <strong>Stock:</strong> {product.stock}</p>
-        <p><i className="fas fa-info-circle"></i> <strong>Descripción:</strong> {product.description}</p>
 
         {product.stock === 1 && <p className="stock-alert">¡Último disponible!</p>}
 
@@ -107,9 +109,9 @@ export default function ProductDetail() {
         >
           {product.stock === 0 ? 'Sin stock' : 'Agregar al carrito'}
         </button>
-        <button>
-          <a href="/shop" className="back-to-shop">Volver a la tienda</a>
-        </button>
+        <a className="back-to-shop" href="/shop">
+           Volver a la tienda
+        </a>
       </div>
     </div>
     </>

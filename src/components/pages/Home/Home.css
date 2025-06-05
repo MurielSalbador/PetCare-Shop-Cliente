@@ -86,7 +86,7 @@
   position: absolute;
   width: 100%;
   height: 2px;
-  background: #5e8c61;
+  background: rgb(17, 163, 231);
   transform: scaleX(0);
   transition: transform 0.4s ease;
   bottom: 0;
@@ -230,19 +230,39 @@
 /*estilos de hero */
 
 .home-hero-section {
-  background: linear-gradient(to right, #feffc7, #ffffff);
   position: relative;
-  overflow: hidden;
-  padding: 6rem 0rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-direction: row;
-   padding-top: 0;
+  height: 567px;
+  overflow: hidden;
+}
+
+.home-hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(233, 115, 164);
+  clip-path: polygon(0 0, 50% 0, 30% 100%, 0% 100%);
+  z-index: -1;
+}
+
+.home-hero-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(17, 163, 231);
+  z-index: -2;
 }
 
 .home-hero-content {
-  padding-top: 5.4rem;
+  padding: 4rem;
   transform: translateX(-50px);
   max-width: 600px;
   z-index: 10;
@@ -250,40 +270,41 @@
 
 .home-hero-title {
   font-size: 2.8rem;
-  color: #333;
+  color: #ffffff;
   margin-bottom: 1.1rem;
 }
 
 
 .home-hero-welcome {
-  font-size: 2.2rem;
-  color: #5e8c61;
-  margin-bottom: 1rem;
+  font-size: 2.8rem;
+  color: white;
+  margin-bottom: 2rem;
 }
 
 .home-hero-content p {
-  font-size: 1.2rem;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
   line-height: 1.6;
 }
 
 .home-hero-button {
   padding: 10px 0;
   width: 160px;
-  color: #5e8c61;
+  color: whitesmoke;
   font-weight: 600;
   font-size: 1.1rem;
   background-color: transparent;
   letter-spacing: 0.1px;
   border-radius: 30px;
-  border: 2px solid #5e8c61;
+  border: 2px solid whitesmoke;
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin-top: 1rem;
 }
 
 .home-hero-button:hover {
-  background-color: #5e8c61;
-  color: whitesmoke;
+  background-color: #2884fd;
 }
 
 .home-hero-image {
@@ -356,7 +377,7 @@
 
 .input-group button {
   padding: 0.8rem 1.5rem;
-  background-color: #5e8c61;
+  background-color: rgb(17, 163, 231);
   color: white;
   border: none;
   border-radius: 8px;
@@ -364,7 +385,7 @@
 }
 
 .input-group button:hover {
-  background-color: #a06000;
+  background-color: #2884fd;
 }
 
 /* Animación del borde multicolor */
@@ -475,27 +496,48 @@
   font-weight: normal;
 }
 
-.see-all-button-container {
+.footer-info {
   text-align: center;
-  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-text {
+  margin-top: 0.5rem;
+  max-width: 300px;
+}
+
+.see-all-button-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center; /* opcional, para centrar el botón */
 }
 
 .see-all-button {
   display: inline-block;
-  padding: 0.5rem 1rem;
-  background-color: #ffc107;
-  color: #000;
-  font-weight: bold;
-  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  max-width: 150px;
+  color: #222;
+  font-weight: 600;
+  font-size: 1.2rem;
+  background-color: rgb(247, 224, 20);
+  letter-spacing: 0.1px;
+  border-radius: 30px;
+  border: 2px solid #222;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
   text-decoration: none;
-  transition: background-color 0.3s;
+  text-align: center;
 }
 
 .see-all-button:hover {
-  background-color: #e0a800;
+  background-color: #2884fd;
+  color: white;
 }
-
-
 
 @media (max-width: 768px) {
   .header-actions {

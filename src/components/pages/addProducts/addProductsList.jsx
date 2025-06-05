@@ -85,9 +85,9 @@ function ProductList() {
             </div>
 
             <div className="admin-product-actions">
-              <button onClick={() => handleEdit(product.id)}>✏️ Editar</button>
+              <button onClick={() => handleEdit(product.id)}>Editar</button>
               <button onClick={() => handleDelete(product.id)}>
-                🗑️ Eliminar
+                Eliminar
               </button>
             </div>
           </div>

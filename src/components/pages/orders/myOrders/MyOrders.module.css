@@ -6,7 +6,7 @@
 
 .myOrders {
   padding: 3rem 2rem;
-  background: linear-gradient(135deg, #f0f4ff, #d9e6ff);
+  background: linear-gradient(70deg, rgb(17, 163, 231), rgb(233, 115, 164));
   min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #2c3e50;

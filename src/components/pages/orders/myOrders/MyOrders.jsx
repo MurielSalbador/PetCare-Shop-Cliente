@@ -32,7 +32,10 @@ const MyOrders = () => {
                 onClick={() => navigate("/")}
               />
             </div>
-      <div className={styles.container}>
+      <div className={styles.container}               
+              data-aos="zoom-in"
+              data-aos-duration="600"
+              data-aos-delay="200">
         <h1>Mis Compras</h1>
 
         {orders.length === 0 ? (

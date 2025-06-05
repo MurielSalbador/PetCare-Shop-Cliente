@@ -52,8 +52,8 @@ const ContactForm = () => {
               data-aos-duration="600"
               data-aos-delay="200"
             >
-              <div className="logo-line-1">RubioHnos</div>
-              <div className="logo-line-2">mayorista</div>
+              <div className="logo-line-1">PetCare</div>
+              <div className="logo-line-2">shop</div>
             </a>
           </div>
 
@@ -68,6 +68,11 @@ const ContactForm = () => {
                 <i className="fa-solid fa-envelope"></i> Contactanos
               </a>
             </li>
+              <li>
+              <a href="/shop" className="link">
+                <i className="fa-solid fa-shop"></i> Tienda
+              </a>
+            </li>
             <li>
               <a href="/myOrders" className="link">
                 <i className="fa-solid fa-envelope"></i> Pedidos
@@ -76,7 +81,7 @@ const ContactForm = () => {
             {isAdminOrSuperAdmin() && (
               <li>
                 <a href="/httpClients" className="link">
-                  <i className="fa-solid fa-envelope"></i> Clientes
+                  <i className="fa-solid fa-envelope"></i> Usuarios
                 </a>
               </li>
             )}

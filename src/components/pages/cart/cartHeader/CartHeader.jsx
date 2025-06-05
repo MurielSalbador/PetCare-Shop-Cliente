@@ -21,7 +21,10 @@ const CartHeader = () => {
     <>
       <FiltersProvider>
         <main className={styles.main}>
-          <div className={styles.container}>
+          <div className={styles.container}
+              data-aos="zoom-in"
+              data-aos-duration="600"
+              data-aos-delay="200">
             <div className={styles.contactClose}>
               <CloseButton
                 aria-label="Cerrar formulario"

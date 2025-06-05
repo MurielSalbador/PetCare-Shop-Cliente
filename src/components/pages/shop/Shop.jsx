@@ -40,8 +40,8 @@ const Shop = () => {
               data-aos-duration="600"
               data-aos-delay="200"
             >
-              <div className="logo-line-1">RubioHnos</div>
-              <div className="logo-line-2">mayorista</div>
+              <div className="logo-line-1">PetCare</div>
+              <div className="logo-line-2">Shop</div>
             </a>
           </div>
 
@@ -56,6 +56,11 @@ const Shop = () => {
                 <i className="fa-solid fa-envelope"></i> Contactanos
               </a>
             </li>
+             <li>
+              <a href="/shop" className="link">
+                <i className="fa-solid fa-shop"></i> Tienda
+              </a>
+            </li>
             <li>
               <a href="/myOrders" className="link">
                 <i className="fa-solid fa-envelope"></i> Pedidos
@@ -64,7 +69,7 @@ const Shop = () => {
             {isAdminOrSuperAdmin() && (
               <li>
                 <a href="/httpClients" className="link">
-                  <i className="fa-solid fa-envelope"></i> Clientes
+                  <i className="fa-solid fa-envelope"></i> Usuarios
                 </a>
               </li>
             )}
@@ -87,9 +92,12 @@ const Shop = () => {
 
       <QueryClientProvider client={queryClient}>
         <FiltersProvider>
-          <main className="main">
+          <main className="main" 
+              data-aos="zoom-in"
+              data-aos-duration="600"
+              data-aos-delay="200">
             <div className="container">
-              {/* Aquí va el botón Gestión de Productos */}
+  
               {isAdminOrSuperAdmin() && (
                 <div className="classButtonAdd">
                   <Link to="/addProducts">Gestión de Productos</Link>

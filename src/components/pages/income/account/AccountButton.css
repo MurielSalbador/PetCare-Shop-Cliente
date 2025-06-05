@@ -35,7 +35,7 @@
 }
 
 .account-dropdown button {
-  background-color: #5e8c61;
+  background-color: rgb(17, 163, 231);
   color: white;
   border: none;
   padding: 1rem 0.6rem;
@@ -44,13 +44,13 @@
   cursor: pointer;
   display: block;
   width: 100%;
-  margin-bottom: 0.5rem; /* <-- Espacio entre botones */
+  margin-bottom: 0.5rem;
 }
 
 .account-dropdown button:hover{
-  background-color: #a06000;
+  background-color: #2884fd;
 }
 
 .account-dropdown button:last-child {
-  margin-bottom: 0; /* Evita margen en el último botón */
+  margin-bottom: 0; 
 }

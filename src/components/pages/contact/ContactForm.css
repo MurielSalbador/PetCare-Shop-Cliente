@@ -4,10 +4,10 @@
 /* Contenedor principal de imagen + formulario */
 
 .hero-section {
- background: linear-gradient(to left, #feffc7, #ffffff);
+ background: linear-gradient(to left, rgb(233, 115, 164), rgb(17, 163, 231));
   position: relative;
   overflow: hidden;
-  padding: 5.85rem 5rem;
+  padding: 6.2rem 5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -16,22 +16,23 @@
 .hero-button{
   padding: 5px;
   width: 130px;
-  color: #5e8c61;
+  color: white;
   font-weight: 600;
   background-color: transparent;
   letter-spacing: 1px;
   border-radius: 30px;
-  border: 2px solid #5e8c61;
+  border: 2px solid white;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .hero-button:hover{
-  background-color: #88a78a;
+  background-color: #2884fd;
   color: whitesmoke;
 }
 
 .hero-content {
+  color: white;
   max-width: 600px;
   z-index: 10;
 }
@@ -53,7 +54,6 @@
   background: whitesmoke;
   z-index: 5;
 }
-
 
 .contact-section-two-columns {
   display: flex;
@@ -88,7 +88,7 @@
 
 .contact-item i {
   font-size: 1.5rem;
-  color: #5e8c61;
+  color: rgb(233, 115, 164);
   margin-right: 1rem;
 }
 
@@ -111,7 +111,7 @@
 }
 
 .contact-form-right button {
-  background-color: #5e8c61;
+  background-color: rgb(74 153 189);
   color: white;
   font-weight: 600;
   letter-spacing: 2px;
@@ -124,7 +124,8 @@
 }
 
 .contact-form-right button:hover{
-  background-color: #375338;
+   background-color: #3b76ce;
+   border-color: #3b76ce;
 }
 
 .contact-form-right label {
@@ -156,8 +157,8 @@
   border: 1px solid #ddd;
   border-radius: 0.5rem;
   background-color: #fff;
-  transition: all 0.3s ease;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .faq-section summary {
@@ -168,8 +169,8 @@
 }
 
 .faq-section details[open] {
-  border-color: #5e8c61; /* Light purple */
-  background-color: #ecffed;
+  border-color: rgb(233, 115, 164);
+  background-color: rgb(255, 220, 234);
 }
 
 .faq-section details p {
@@ -237,7 +238,7 @@
 .card-icon {
   font-size: 48px;
   margin-bottom: 15px;
-  color: #5e8c61;
+  color: rgb(17, 163, 231);
 }
 
 .card h3 {
@@ -256,7 +257,7 @@
 /* =========================== */
 
 .footer {
-  background-color: #333;
+  background-color: rgb(9 48 68);
   color: #f3f4f6;
   padding: 1rem 1rem 0.5rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -468,5 +469,5 @@
 
 .nav-center li .link:hover,
 .nav-right li .link:hover {
-  color: #5e8c61;
+  color: rgb(17, 163, 231);
 }

@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { toast } from "react-toastify";
-import BackgroundLogin from "../../../../assets/BackgroundLogin.avif";
 import LoginImg from "../../../../assets/LoginImg.jpg";
 import "./Login.css";
 
@@ -81,14 +80,19 @@ function Login() {
   return (
     <div
       className="login-background"
-      style={{ backgroundImage: `url(${BackgroundLogin})` }}
     >
       <div className="login-container">
         <div
-          className="login-left"
+          className="login-left"   
+              data-aos="fade-right"
+              data-aos-duration="700"
+              data-aos-delay="200"
           style={{ backgroundImage: `url(${LoginImg})` }}
         ></div>
-        <div className="login-right">
+        <div className="login-right"   
+              data-aos="fade-left"
+              data-aos-duration="700"
+              data-aos-delay="200">
           <div className="login-header">
             <button className="back-arrow" onClick={() => navigate("/")}>
               <i className="fas fa-arrow-left"></i>

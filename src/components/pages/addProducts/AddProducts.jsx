@@ -101,13 +101,12 @@ function ProductForm({ productId, onSuccess }) {
   };
 
   return (
-    <div className="container-formAdd">
-      <div className="contactClose">
-        <CloseButton
-          aria-label="Cerrar formulario"
-          onClick={() => navigate("/")}
-        />
-      </div>
+    <div className="container-formAdd"               data-aos="zoom-in"
+              data-aos-duration="600"
+              data-aos-delay="200">
+        <button className="back-arrow" onClick={() => navigate("/shop")}>
+          <i className="fas fa-arrow-left"></i>
+        </button>
 
       <form className="product-form-container" onSubmit={handleSubmit}>
         <h2>{productId ? "Editar Producto" : "Agregar Producto"}</h2>

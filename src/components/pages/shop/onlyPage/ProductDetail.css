@@ -12,7 +12,7 @@
 }
 
 .product-detail img {
-  max-width: 400px;
+  max-width: 450px;
   width: 100%;
   border-radius: 8px;
   object-fit: contain;
@@ -51,15 +51,15 @@
 }
 
 .product-detail .info p .fa-tag {
-  color: #3483fa; /* Mercado Libre blue */
+  color: #3483fa;
 }
 
 .product-detail .info p .fa-dollar-sign {
-  color: #ffdb15; /* Mercado Libre yellow */
+  color: #ffdb15;
 }
 
 .product-detail .info p .fa-box {
-  color: #00a650; /* Mercado Libre green */
+  color: #00a650;
 }
 
 .product-detail .info p .fa-info-circle {
@@ -75,6 +75,49 @@
   padding: 0.4rem 0.8rem;
   align-self: flex-start;
   font-size: 1rem;
+}
+
+.add-cart-btn {
+  display: inline-block;
+  padding: 1rem;
+  margin-top: 1rem;
+  background-color: #942a1b;      
+  color: white;
+  text-align: center;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.add-cart-btn:hover {
+  background-color: #661e15;      
+}
+
+.add-cart-btn:disabled {
+  background-color: #6c757d;      
+  cursor: not-allowed;
+}
+
+.back-to-shop {
+  display: inline-block;
+  padding: 1rem;
+  margin-top: 1rem;
+  background-color: #2a9d8f;
+  color: white; 
+  text-align: center;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;          
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.back-to-shop:hover {
+  background-color: #1a7066;      
 }
 
 @media (max-width: 768px) {

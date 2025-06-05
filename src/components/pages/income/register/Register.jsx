@@ -4,8 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./Register.css";
 import ModalSuccess from "../../../modalRegister/ModalRegister.jsx";
-import BackgroundRegister from "../../../../assets/BackgroundRegister.avif";
-import RegisterImg from "../../../../assets/RegisterImg.avif";
+import RegisterImg from "../../../../assets/RegisterImg.jpg";
 
 function Register() {
   const [validated, setValidated] = useState(false);
@@ -66,14 +65,19 @@ function Register() {
   return (
     <div
       className="register-background"
-      style={{ backgroundImage: `url(${BackgroundRegister})` }}
     >
       <div className="register-container">
         <div
-          className="register-left"
+          className="register-left" 
+              data-aos="fade-right"
+              data-aos-duration="700"
+              data-aos-delay="200"
           style={{ backgroundImage: `url(${RegisterImg})` }}
         ></div>
-        <div className="register-right">
+        <div className="register-right" 
+              data-aos="fade-left"
+              data-aos-duration="700"
+              data-aos-delay="200">
           <button className="back-arrow" onClick={() => navigate("/")}>
             <i className="fas fa-arrow-left"></i>
           </button>

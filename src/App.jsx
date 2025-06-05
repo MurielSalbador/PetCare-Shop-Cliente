@@ -7,6 +7,13 @@ import Home from "./components/pages/Home/Home.jsx";
 //login
 import Login from "./components/pages/income/login/Login.jsx";
 
+//faq
+import Faq from "./components/pages/contact/FaqQuestions.jsx"
+
+//passwordReset
+
+import PwReset from "./components/pages/income/login/PasswordReset.jsx"
+
 //register
 import Register from "./components/pages/income/register/Register.jsx";
 
@@ -51,6 +58,7 @@ import 'aos/dist/aos.css';
 //tostify
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import FaqQuestions from "./components/pages/contact/FaqQuestions.jsx";
 
 function App() {
 
@@ -73,6 +81,8 @@ function App() {
           <Route path="/cart" element={<CartHeader />} />
           <Route path="/finish" element={<FinishCart />} />
           <Route path="/allOrders" element={<Orders />} />
+          <Route path="/faq" element={<FaqQuestions />} />
+          <Route path="/recuperar" element={<PwReset />} />
           <Route
             path="/addProducts"
             element={

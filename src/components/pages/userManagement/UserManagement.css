@@ -12,7 +12,7 @@
   min-height: 100vh;
   padding: 2rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f0f4f8;
+  background-color: #fff4fa;
   animation: fadeIn 0.6s ease-in-out;
 }
 
@@ -94,7 +94,7 @@
 }
 
 .user-management button:nth-child(1) {
-  background-color: #3b82f6;
+  background-color: #ff0000;
   color: #ffffff;
 }
 

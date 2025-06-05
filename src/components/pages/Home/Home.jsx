@@ -3,7 +3,7 @@ import { useProducts } from "../../../../../PetCare-Shop-Server/src/hooks/serch/
 import { Products } from "../serch/productsList.jsx";
 import { Link } from "react-router-dom";
 import "./Home.css";
-import cuteDog from "../../../assets/cuteDog2.png";
+import cuteDog from "../../../assets/prueba1.png";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import { FaGithub, FaInstagram, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
@@ -81,8 +81,8 @@ export default function Home() {
               data-aos-duration="600"
               data-aos-delay="200"
             >
-              <div className="logo-line-1">RubioHnos</div>
-              <div className="logo-line-2">mayorista</div>
+              <div className="logo-line-1">PetCare</div>
+              <div className="logo-line-2">shop</div>
             </a>
           </div>
 
@@ -97,6 +97,11 @@ export default function Home() {
                 <i className="fa-solid fa-envelope"></i> Contactanos
               </a>
             </li>
+               <li>
+              <a href="/shop" className="link">
+                <i className="fa-solid fa-shop"></i> Tienda
+              </a>
+            </li>
             <li>
               <a href="/myOrders" className="link">
                 <i className="fa-solid fa-envelope"></i> Pedidos
@@ -105,7 +110,7 @@ export default function Home() {
             {isAdminOrSuperAdmin() && (
               <li>
                 <a href="/httpClients" className="link">
-                  <i className="fa-solid fa-envelope"></i> Clientes
+                  <i className="fa-solid fa-envelope"></i> Usuarios
                 </a>
               </li>
             )}
@@ -128,19 +133,20 @@ export default function Home() {
 
       <section
         className="home-hero-section"
-        data-aos="fade-right"
-        data-aos-duration="700"
-        data-aos-delay="200"
+        data-aos="fade-up"
+        data-aos-duration="500"
+        data-aos-delay="100"
       >
         <img
           src={cuteDog}
           alt="Mascota"
           className="home-hero-image"
           style={{ transform: "scaleX(-1)" }}
-          data-aos="fade-right"
-          data-aos-duration="800"
         />
-        <div className="home-hero-content">
+        <div className="home-hero-content"        
+        data-aos="zoom-in-left"
+        data-aos-duration="700"
+        data-aos-delay="200">
           {userName && (
             <h2 className="home-hero-welcome">¡Bienvenid@, {userName}!</h2>
           )}
@@ -150,10 +156,7 @@ export default function Home() {
           <p>
             Productos seleccionados con amor para que tu mascota esté feliz,
             sana y bien cuidada.
-          </p>
-          <p>
-            Porque sabemos que no son solo mascotas, son parte de tu familia.
-          </p>
+          </p>  
           <Link to="/shop">
             <button className="home-hero-button">Ir a la tienda</button>
           </Link>
@@ -217,7 +220,7 @@ export default function Home() {
           </section>
 
           <section className="product-list">
-            {loading ? <p>Loading...</p> : <Products products={products} />}
+            {loading ? <p>Cargando...</p> : <Products products={products} />}
           </section>
         </div>
       </main>

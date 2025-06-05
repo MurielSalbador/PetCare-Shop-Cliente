@@ -1,13 +1,12 @@
 .finishCart {
-  min-height: 100vh;
-  background-color: #d4edda;
-  background-image: url("https://es.vecteezy.com/foto/8030262-whatsapp-logo-sobre-fondo-verde-3d-render" );
-  background: linear-gradient(135deg, #e5f5ec, #d4edda);
+  background: linear-gradient(70deg, rgb(17, 163, 231), rgb(233, 115, 164));
+  margin: 0;
+  padding: 0;
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 2rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  align-items: center;
+  background-size: cover;
+  overflow: hidden;
 }
 
 .contactClose {
@@ -28,7 +27,7 @@
 }
 
 .container h1 {
-  color: #075e54;
+  color: #424141;
   margin-bottom: 1.5rem;
 }
 
@@ -53,7 +52,7 @@
 }
 
 .checkoutForm button {
-  background-color: #5e8c61;
+  background-color: #598dbd;
   color: white;
   padding: 0.9rem 1.5rem;
   font-size: 1.1rem;
@@ -64,18 +63,13 @@
 }
 
 .checkoutForm button:hover {
-  background-color: #73bb79;
+  background-color: #376188;
 }
 
 .checkoutSummary {
   margin-top: 1rem;
   font-size: 1.2rem;
-  color: #075e54;
-}
-
-.whatsappLogo {
-  width: 50px;
-  margin-bottom: 1rem;
+  color: #087e6e;
 }
 
 .selected {

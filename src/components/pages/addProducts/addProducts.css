@@ -4,7 +4,7 @@
 }
 /* Contenedor del formulario */
 .product-form-container {
-  background: #fff;
+  background: #ffffff;
   border-radius: 16px;
   padding: 2rem;
   margin: 2rem auto;
@@ -20,7 +20,7 @@
 /* Título */
 .product-form-container h2 {
   text-align: center;
-  color: #86520f;
+  color: #555454;
   margin-bottom: 1.5rem;
   font-size: 1.8rem;
 }
@@ -42,7 +42,7 @@
   width: 100%;
   padding: 0.8rem 1.2rem;
   border: 1px solid #ccc;
-  border-radius: 40px; /* más redondo */
+  border-radius: 40px; 
   font-size: 1rem;
   outline: none;
   transition: border 0.3s, box-shadow 0.3s;
@@ -50,14 +50,14 @@
 }
 
 .product-form-container input:focus {
-  border-color: #86520f;
-  box-shadow: 0 0 0 4px rgba(27, 19, 2, 0.2);
+  border-color: #2477d6;
+  box-shadow: 0 0 0 4px rgba(216, 204, 204, 0.2);
 }
 
 /* Checkbox */
 .product-form-container input[type="checkbox"] {
   margin-right: 8px;
-  transform: scale(1.2); /* más grande */
+  transform: scale(1.4);
 }
 
 /* Botón */
@@ -65,7 +65,7 @@
   margin-top: 1.5rem;
   width: 100%;
   padding: 0.9rem 1.2rem;
-  background-color: #86520f;
+  background-color: rgb(74 153 189);
   color: white;
   border: none;
   border-radius: 40px;
@@ -75,8 +75,7 @@
 }
 
 .product-form-container button:hover {
-  background-color: #5e3909;
-  transform: translateY(-1px);
+  background-color: #3b76ce;
 }
 
 /* Animación del borde */
