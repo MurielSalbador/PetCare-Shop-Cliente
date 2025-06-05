@@ -7,7 +7,7 @@ import cuteDog from "../../../assets/dogbannercontact.png";
 import { FaGithub, FaInstagram, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 //protected
-import { isAdminOrSuperAdmin } from "../../../utils/auth.js";
+import { isSuperAdmin } from "../../../utils/auth.js";
 
 const ContactForm = () => {
   const form = useRef();
@@ -78,7 +78,7 @@ const ContactForm = () => {
                 <i className="fa-solid fa-envelope"></i> Pedidos
               </a>
             </li>
-            {isAdminOrSuperAdmin() && (
+            {isSuperAdmin() && (
               <li>
                 <a href="/httpClients" className="link">
                   <i className="fa-solid fa-envelope"></i> Usuarios

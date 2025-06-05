@@ -9,7 +9,7 @@ import Cart from "../cart/Cart/Cart.jsx";
 import Filters from "../cart/Cart/Filters.jsx";
 
 //protected
-import { isAdminOrSuperAdmin } from "../../../utils/auth.js";
+import { isAdminOrSuperAdmin, isSuperAdmin } from "../../../utils/auth.js";
 
 //account
 import AccountButton from "../income/account/AccountButton.jsx";
@@ -66,7 +66,7 @@ const Shop = () => {
                 <i className="fa-solid fa-envelope"></i> Pedidos
               </a>
             </li>
-            {isAdminOrSuperAdmin() && (
+            {isSuperAdmin() && (
               <li>
                 <a href="/httpClients" className="link">
                   <i className="fa-solid fa-envelope"></i> Usuarios

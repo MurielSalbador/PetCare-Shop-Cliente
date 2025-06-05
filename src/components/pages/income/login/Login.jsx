@@ -44,7 +44,16 @@ function Login() {
           theme: "colored",
         });
 
-        navigate("/");
+        const redirectPath = localStorage.getItem("redirectAfterLogin");
+        localStorage.removeItem("redirectAfterLogin"); // limpiás la redirección
+
+        // 🚨 ACA CAMBIAMOS: si venía de finishcart, lo mandamos a reloadredirect
+        if (redirectPath === "/finish") {
+          localStorage.setItem("shouldRedirectToHome", "true");
+          navigate("/reloadredirect");
+        } else {
+          navigate(redirectPath || "/");
+        }
       } else {
         console.log(res.status, data.error);
         if (
@@ -78,21 +87,21 @@ function Login() {
   };
 
   return (
-    <div
-      className="login-background"
-    >
+    <div className="login-background">
       <div className="login-container">
         <div
-          className="login-left"   
-              data-aos="fade-right"
-              data-aos-duration="700"
-              data-aos-delay="200"
+          className="login-left"
+          data-aos="fade-right"
+          data-aos-duration="700"
+          data-aos-delay="200"
           style={{ backgroundImage: `url(${LoginImg})` }}
         ></div>
-        <div className="login-right"   
-              data-aos="fade-left"
-              data-aos-duration="700"
-              data-aos-delay="200">
+        <div
+          className="login-right"
+          data-aos="fade-left"
+          data-aos-duration="700"
+          data-aos-delay="200"
+        >
           <div className="login-header">
             <button className="back-arrow" onClick={() => navigate("/")}>
               <i className="fas fa-arrow-left"></i>

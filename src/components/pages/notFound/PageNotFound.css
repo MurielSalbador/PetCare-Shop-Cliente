@@ -1,0 +1,60 @@
+/*======================
+    404 page
+=======================*/
+
+.page_404 {
+  padding: 60px 20px;
+  background: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.four_zero_four_bg {
+  background-image: url("https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 450px; /* más altura */
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.four_zero_four_bg h1 {
+  font-size: 120px;
+  color: white;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+}
+
+
+.contant_box_404 h3 {
+  font-size: 26px;
+  color: #495057;
+  margin-bottom: 10px;
+}
+
+.contant_box_404 p {
+  color: #6c757d;
+  font-size: 18px;
+}
+
+.link_404 {
+  color: #fff;
+  padding: 12px 24px;
+  background: #007bff;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-top: 20px;
+  display: inline-block;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.link_404:hover {
+  background: #0056b3;
+}

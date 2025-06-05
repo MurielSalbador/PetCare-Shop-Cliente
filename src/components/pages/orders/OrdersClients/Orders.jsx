@@ -97,6 +97,7 @@ const Orders = () => {
     const token = localStorage.getItem("token");
 
     try {
+      console.log("Intentando eliminar pedido con ID:", orderId);
       const res = await fetch(`http://localhost:3000/api/orders/${orderId}`, {
         method: "DELETE",
         headers: {

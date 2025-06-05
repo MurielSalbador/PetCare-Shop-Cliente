@@ -47,6 +47,11 @@ import ProductDetail from './components/pages/shop/onlyPage/ProductDetail.jsx';
 //user management
 import UserManagement from './components/pages/userManagement/UserManagement.jsx';
 
+//redirect on reload
+import ReloadRedirect from './components/pages/redirectOnPage/ReloadRedirect.jsx';
+
+//notFound
+import PageNotFound from './components/pages/notFound/PageNotFound.jsx';
 
 //css
 import "./App.css";
@@ -95,6 +100,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/httpClients" element={<UserManagement />} />
+          <Route path="/reloadredirect" element={<ReloadRedirect />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
 
         <ToastContainer />

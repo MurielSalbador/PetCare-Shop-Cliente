@@ -11,7 +11,7 @@ import { FaGithub, FaInstagram, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import AccountButton from "../income/account/AccountButton.jsx";
 
 //protected
-import { isAdminOrSuperAdmin } from "../../../utils/auth.js";
+import { isSuperAdmin } from "../../../utils/auth.js";
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -107,7 +107,7 @@ export default function Home() {
                 <i className="fa-solid fa-envelope"></i> Pedidos
               </a>
             </li>
-            {isAdminOrSuperAdmin() && (
+            {isSuperAdmin() && (
               <li>
                 <a href="/httpClients" className="link">
                   <i className="fa-solid fa-envelope"></i> Usuarios

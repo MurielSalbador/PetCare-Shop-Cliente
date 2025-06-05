@@ -11,3 +11,12 @@ export const isAdminOrSuperAdmin = () => {
     return false;
   }
 };
+
+export const isSuperAdmin = () => {
+  try {
+    const user = JSON.parse(localStorage.getItem("user"));
+    return user?.role === "superAdmin";
+  } catch {
+    return false;
+  }
+};

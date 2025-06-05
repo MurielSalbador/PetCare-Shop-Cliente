@@ -142,8 +142,10 @@ const addToCart = (product) => {
       alert("La dirección debe tener al menos 5 caracteres.");
       return;
     }
-    if (!user) {
+     if (!user) {
       alert("Debés iniciar sesión para confirmar la compra.");
+      // 👉 Guardás que viene desde el intento de compra
+      localStorage.setItem("redirectAfterLogin", "/finish");
       navigate("/login");
       return;
     }
