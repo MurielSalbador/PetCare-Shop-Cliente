@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import AccountButton from "../income/account/AccountButton.jsx";
 import cuteDog from "../../../assets/dogbannercontact.png";
 import { FaGithub, FaInstagram, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { toast, ToastContainer } from "react-toastify";
 
 //protected
 import { isSuperAdmin } from "../../../utils/auth.js";
@@ -26,15 +27,17 @@ const ContactForm = () => {
       .then(
         (result) => {
           console.log("Mensaje enviado ✅", result.text);
-          alert("¡Mensaje enviado con éxito!");
+          toast.success("¡Mensaje enviado con éxito!");
           form.current.reset();
           setTimeout(() => {
             navigate("/");
-          }, 1500);
+          }, 3000);
         },
         (error) => {
           console.log("Error ❌", error.text);
-          alert("Ocurrió un error al enviar el mensaje. Intenta nuevamente.");
+          toast.error(
+            "Ocurrió un error al enviar el mensaje. Intenta nuevamente."
+          );
         }
       );
   };
@@ -68,7 +71,7 @@ const ContactForm = () => {
                 <i className="fa-solid fa-envelope"></i> Contactanos
               </a>
             </li>
-              <li>
+            <li>
               <a href="/shop" className="link">
                 <i className="fa-solid fa-shop"></i> Tienda
               </a>
@@ -344,6 +347,13 @@ const ContactForm = () => {
           </div>
         </div>
       </footer>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        pauseOnHover
+        theme="dark"
+      />
     </>
   );
 };

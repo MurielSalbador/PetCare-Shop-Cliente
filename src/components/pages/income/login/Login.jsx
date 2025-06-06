@@ -159,7 +159,7 @@ function Login() {
           <div className="faq-recomendation">
             <p className="text-center">
               Si olvidaste tu contraseña, hacé click en{" "}
-              <a href="/recuperar" className="custom-button-faq">
+              <a href="/forgot-password" className="custom-button-faq">
                 Recuperarla
               </a>{" "}
               y seguí las instrucciones.

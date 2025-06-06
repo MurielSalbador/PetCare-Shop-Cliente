@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import ProductForm from "./AddProducts.jsx";
 import "./addProductsList.css"
@@ -39,11 +40,11 @@ function ProductList() {
       },
     });
 
-    alert("✅ Producto eliminado");
+    toast.success("✅ Producto eliminado");
     fetchProducts(); // Recarga productos
   } catch (err) {
     console.error("Error al eliminar:", err);
-    alert("❌ No se pudo eliminar el producto");
+    toast.error("❌ No se pudo eliminar el producto");
   }
 };
 
@@ -53,6 +54,7 @@ function ProductList() {
   };
 
   return (
+    <>
 <div className="container-formAdd">
   <div >
       <ProductForm productId={editingProductId} onSuccess={handleSuccess} />
@@ -95,6 +97,15 @@ function ProductList() {
       </div>
     </div>
 </div>
+
+<ToastContainer
+        position="top-center"
+        autoClose={3000}
+        pauseOnHover
+        theme="dark"
+      />
+
+      </>
      
     
   );

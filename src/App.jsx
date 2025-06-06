@@ -8,11 +8,13 @@ import Home from "./components/pages/Home/Home.jsx";
 import Login from "./components/pages/income/login/Login.jsx";
 
 //faq
-import Faq from "./components/pages/contact/FaqQuestions.jsx"
+import FaqQuestions from "./components/pages/contact/FaqQuestions.jsx";
 
 //passwordReset
+import PwReset from "./components/pages/income/login/resetPassword/PasswordReset.jsx"
 
-import PwReset from "./components/pages/income/login/PasswordReset.jsx"
+//forgotPassword
+import ForgotPassword from "./components/pages/income/login/forgotPassword/ForgotPassword.jsx";
 
 //register
 import Register from "./components/pages/income/register/Register.jsx";
@@ -63,7 +65,7 @@ import 'aos/dist/aos.css';
 //tostify
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import FaqQuestions from "./components/pages/contact/FaqQuestions.jsx";
+
 
 function App() {
 
@@ -87,7 +89,8 @@ function App() {
           <Route path="/finish" element={<FinishCart />} />
           <Route path="/allOrders" element={<Orders />} />
           <Route path="/faq" element={<FaqQuestions />} />
-          <Route path="/recuperar" element={<PwReset />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password/:token" element={<PwReset />} />
           <Route
             path="/addProducts"
             element={

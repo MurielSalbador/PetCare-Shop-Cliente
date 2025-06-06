@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import CloseButton from "react-bootstrap/CloseButton";
 import styles from "./AllOrders.module.css";
 import axios from "axios";
@@ -15,7 +16,7 @@ const AllOrders = () => {
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (!user || !token) {
-      alert("Debés iniciar sesión como administrador.");
+      toast.error("Debés iniciar sesión como administrador.");
       navigate("/login");
       return;
     }
@@ -29,7 +30,7 @@ const AllOrders = () => {
       .then((res) => setOrders(res.data))
       .catch((err) => {
         console.error("Error al obtener pedidos:", err);
-        alert("No estás autorizado para ver esta sección.");
+        toast.error("No estás autorizado para ver esta sección.");
         navigate("/");
       });
   }, [navigate]);
@@ -85,6 +86,14 @@ const AllOrders = () => {
           )}
         </div>
       </main>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        pauseOnHover
+        theme="dark"
+      />
+      
     </>
   );
 };

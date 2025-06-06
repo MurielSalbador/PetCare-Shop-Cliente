@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import CloseButton from "react-bootstrap/CloseButton";
 import { useNavigate } from "react-router-dom";
@@ -49,12 +50,12 @@ function ProductForm({ productId, onSuccess }) {
     const stockParsed = Number(formData.stock);
 
     if (isNaN(priceParsed) || priceParsed < 0) {
-      alert("Ingrese un precio válido mayor o igual a 0");
+      toast.error("Ingrese un precio válido mayor o igual a 0");
       return;
     }
 
     if (isNaN(stockParsed) || stockParsed < 0) {
-      alert("Ingrese un stock válido mayor o igual a 0");
+      toast.error("Ingrese un stock válido mayor o igual a 0");
       return;
     }
     const payload = {
@@ -78,10 +79,10 @@ function ProductForm({ productId, onSuccess }) {
           payload,
           config
         );
-        alert("✅ Producto actualizado");
+        toast.success("✅ Producto actualizado");
       } else {
         await axios.post("http://localhost:3000/api/products", payload, config);
-        alert("✅ Producto agregado");
+        toast.success("✅ Producto agregado");
       }
 
       setFormData({
@@ -96,80 +97,92 @@ function ProductForm({ productId, onSuccess }) {
       onSuccess?.();
     } catch (error) {
       console.error(error);
-      alert("❌ Error al guardar el producto");
+      toast.error("❌ Error al guardar el producto");
     }
   };
 
   return (
-    <div className="container-formAdd"               data-aos="zoom-in"
-              data-aos-duration="600"
-              data-aos-delay="200">
+    <>
+      <div
+        className="container-formAdd"
+        data-aos="zoom-in"
+        data-aos-duration="600"
+        data-aos-delay="200"
+      >
         <button className="back-arrow" onClick={() => navigate("/shop")}>
           <i className="fas fa-arrow-left"></i>
         </button>
 
-      <form className="product-form-container" onSubmit={handleSubmit}>
-        <h2>{productId ? "Editar Producto" : "Agregar Producto"}</h2>
+        <form className="product-form-container" onSubmit={handleSubmit}>
+          <h2>{productId ? "Editar Producto" : "Agregar Producto"}</h2>
 
-        <label>Título:</label>
-        <input
-          name="title"
-          value={formData.title}
-          onChange={handleChange}
-          required
-        />
-
-        <label>Marca:</label>
-        <input
-          name="brand"
-          value={formData.brand}
-          onChange={handleChange}
-          required
-        />
-
-        <label>Precio:</label>
-        <input
-          name="price"
-          type="number"
-          value={formData.price}
-          onChange={handleChange}
-          step="0.01"
-          min="0"
-          required
-        />
-
-        <label>Stock:</label>
-        <input
-          name="stock"
-          type="number"
-          value={formData.stock}
-          onChange={handleChange}
-          min="0"
-          required
-        />
-
-        <label>URL de imagen:</label>
-        <input
-          name="imageUrl"
-          value={formData.imageUrl}
-          onChange={handleChange}
-        />
-
-        <label>
+          <label>Título:</label>
           <input
-            type="checkbox"
-            name="available"
-            checked={formData.available}
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+            required
+          />
+
+          <label>Marca:</label>
+          <input
+            name="brand"
+            value={formData.brand}
+            onChange={handleChange}
+            required
+          />
+
+          <label>Precio:</label>
+          <input
+            name="price"
+            type="number"
+            value={formData.price}
+            onChange={handleChange}
+            step="0.01"
+            min="0"
+            required
+          />
+
+          <label>Stock:</label>
+          <input
+            name="stock"
+            type="number"
+            value={formData.stock}
+            onChange={handleChange}
+            min="0"
+            required
+          />
+
+          <label>URL de imagen:</label>
+          <input
+            name="imageUrl"
+            value={formData.imageUrl}
             onChange={handleChange}
           />
-          Disponible
-        </label>
 
-        <button type="submit">
-          {productId ? "Actualizar" : "Guardar"} Producto
-        </button>
-      </form>
-    </div>
+          <label>
+            <input
+              type="checkbox"
+              name="available"
+              checked={formData.available}
+              onChange={handleChange}
+            />
+            Disponible
+          </label>
+
+          <button type="submit">
+            {productId ? "Actualizar" : "Guardar"} Producto
+          </button>
+        </form>
+      </div>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        pauseOnHover
+        theme="dark"
+      />
+    </>
   );
 }
 

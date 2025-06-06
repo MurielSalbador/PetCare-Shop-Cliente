@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import { Trash } from "react-bootstrap-icons"; // importamos el icono
 import CloseButton from "react-bootstrap/CloseButton";
 import styles from "./Orders.module.css";
@@ -15,7 +16,7 @@ const Orders = () => {
   useEffect(() => {
   const storedUser = localStorage.getItem("user");
   if (!storedUser) {
-    alert("Debés iniciar sesión para ver tus pedidos.");
+    toast.error("Debés iniciar sesión para ver tus pedidos.");
     navigate("/login");
     return;
   }
@@ -23,7 +24,7 @@ const Orders = () => {
   const parsedUser = JSON.parse(storedUser);
 
   if (parsedUser.role !== "admin" && parsedUser.role !== "superAdmin") {
-    alert("No tenés permiso para ver esta sección.");
+    toast.error("No tenés permiso para ver esta sección.");
     navigate("/");
     return;
   }
@@ -68,7 +69,7 @@ const Orders = () => {
 
       if (!res.ok) {
         const errData = await res.json();
-        alert(
+        toast.error(
           "Error al actualizar estado: " + (errData.error || res.statusText)
         );
         return;
@@ -80,7 +81,7 @@ const Orders = () => {
         )
       );
     } catch (error) {
-      alert("Error de red al actualizar estado");
+      toast.error("Error de red al actualizar estado");
     } finally {
       setLoadingIds((ids) => ids.filter((id) => id !== orderId));
     }
@@ -107,13 +108,13 @@ const Orders = () => {
 
       if (!res.ok) {
         const errData = await res.json();
-        alert("Error al eliminar pedido: " + (errData.error || res.statusText));
+        toast.error("Error al eliminar pedido: " + (errData.error || res.statusText));
         return;
       }
 
       setOrders((prevOrders) => prevOrders.filter((order) => order.id !== orderId));
     } catch (error) {
-      alert("Error de red al eliminar pedido");
+      toast.error("Error de red al eliminar pedido");
     } finally {
       setLoadingIds((ids) => ids.filter((id) => id !== orderId));
     }
@@ -209,6 +210,13 @@ const Orders = () => {
           </div>
         </div>
       </div>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        pauseOnHover
+        theme="dark"
+      />
     </>
   );
 };

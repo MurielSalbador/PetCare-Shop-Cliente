@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import CloseButton from "react-bootstrap/CloseButton";
 import styles from "./MyOrders.module.css";
 
@@ -11,7 +12,7 @@ const MyOrders = () => {
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (!user) {
-      alert("Debés iniciar sesión para ver tu historial de compras.");
+      toast.error("Debés iniciar sesión para ver tu historial de compras.");
       navigate("/login");
       return;
     }
@@ -66,6 +67,13 @@ const MyOrders = () => {
         )}
       </div>
     </main>
+
+     <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        pauseOnHover
+        theme="dark"
+      />
     </>
   );
 };
