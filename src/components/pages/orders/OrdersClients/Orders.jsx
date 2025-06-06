@@ -16,7 +16,7 @@ const Orders = () => {
   useEffect(() => {
   const storedUser = localStorage.getItem("user");
   if (!storedUser) {
-    toast.error("Debés iniciar sesión para ver tus pedidos.");
+    toast.info("Debés iniciar sesión para ver tus pedidos.");
     navigate("/login");
     return;
   }

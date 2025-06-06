@@ -1,6 +1,7 @@
 import { useShallow } from "zustand/shallow";
 import { useCart } from "../../../../store.js";
 import { useFilters } from "../../../../hooks/useFilters.js";
+import { toast, ToastContainer } from "react-toastify";
 
 //incremente el stock del producto al eliminarlo del carrito
 import { useQueryClient } from "@tanstack/react-query";
@@ -28,6 +29,7 @@ export default function Cart() {
   const queryClient = useQueryClient();
 
   return (
+
     <div className="cart">
       <h3 className="cart-title">Cart:</h3>
       <ul className="cart-list">
@@ -61,8 +63,17 @@ export default function Cart() {
                 onClick={() => {
                   if (item.quantity < item.stock) {
                     addCart(item);
+
+                    queryClient.setQueryData(
+                      ["products", filters],
+                      (oldProducts) => {
+                        return oldProducts.map((p) =>
+                          p.id === item.id ? { ...p, stock: p.stock - 1 } : p
+                        );
+                      }
+                    );
                   } else {
-                    alert(
+                    toast.info(
                       "¡Has alcanzado el stock máximo disponible para este producto!"
                     );
                   }
@@ -79,11 +90,11 @@ export default function Cart() {
       </ul>
       <div className="cart-summary">
         <div>
-          <p>Total Items:</p>
+          <p>Items Total :</p>
           <p>{totalItems}</p>
         </div>
         <div>
-          <p>Total Price:</p>
+          <p>Precio Total :</p>
           <p>${totalPrice.toFixed(2)}</p>
         </div>
       </div>

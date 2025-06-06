@@ -1,6 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./AccountButton.css";
 
 const AccountButton = () => {
@@ -14,7 +16,6 @@ const AccountButton = () => {
     if (savedUser) setUser(savedUser);
   }, []);
 
-  // Cierra el menú al hacer clic fuera
   useEffect(() => {
     const handler = (e) => {
       if (menuRef.current && !menuRef.current.contains(e.target)) {
@@ -44,6 +45,15 @@ const AccountButton = () => {
     setUser(null);
     setOpen(false);
     navigate("/");
+    toast.info("Hasta pronto 🐱💔", {
+       position:"top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "dark",
+    });
   };
 
   return (
@@ -56,9 +66,6 @@ const AccountButton = () => {
         <div className="account-dropdown">
           <p>{user.email}</p>
 
-
-
-          {/* para ver las ordenes de los clientes */}
           {(user?.role === "admin" || user?.role === "superAdmin") && (
             <button
               onClick={() => {
@@ -70,11 +77,12 @@ const AccountButton = () => {
             </button>
           )}
 
-
           <button onClick={handleViewOrders}>Ver mis compras</button>
           <button onClick={handleLogout}>Cerrar sesión</button>
         </div>
       )}
+
+       <ToastContainer/>
     </div>
   );
 };

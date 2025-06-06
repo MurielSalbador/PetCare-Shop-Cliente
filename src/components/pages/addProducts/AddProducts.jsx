@@ -50,12 +50,12 @@ function ProductForm({ productId, onSuccess }) {
     const stockParsed = Number(formData.stock);
 
     if (isNaN(priceParsed) || priceParsed < 0) {
-      toast.error("Ingrese un precio válido mayor o igual a 0");
+      toast.info("Ingrese un precio válido mayor o igual a 0");
       return;
     }
 
     if (isNaN(stockParsed) || stockParsed < 0) {
-      toast.error("Ingrese un stock válido mayor o igual a 0");
+      toast.info("Ingrese un stock válido mayor o igual a 0");
       return;
     }
     const payload = {

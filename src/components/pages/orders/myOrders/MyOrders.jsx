@@ -12,7 +12,7 @@ const MyOrders = () => {
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (!user) {
-      toast.error("Debés iniciar sesión para ver tu historial de compras.");
+      toast.info("Debés iniciar sesión para ver tu historial de compras.");
       navigate("/login");
       return;
     }

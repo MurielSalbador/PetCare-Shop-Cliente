@@ -51,7 +51,7 @@ const PasswordReset = () => {
     e.preventDefault();
 
     if (newPassword.length < 6) {
-      toast.error("La contraseña debe tener al menos 6 caracteres.");
+      toast.info("La contraseña debe tener al menos 6 caracteres.");
       return;
     }
 

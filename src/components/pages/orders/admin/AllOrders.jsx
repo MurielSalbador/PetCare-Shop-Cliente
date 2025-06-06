@@ -16,7 +16,7 @@ const AllOrders = () => {
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (!user || !token) {
-      toast.error("Debés iniciar sesión como administrador.");
+      toast.info("Debés iniciar sesión como administrador.");
       navigate("/login");
       return;
     }
