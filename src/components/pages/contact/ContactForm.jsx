@@ -44,7 +44,6 @@ const ContactForm = () => {
 
   return (
     <>
-      {/* ========== HEADER ========== */}
       <header className="main-header">
         <div className="header-actions">
           <div className="nav-logo">
@@ -225,7 +224,6 @@ const ContactForm = () => {
       {/* ========== SECCIÓN DE CONTACTO ========== */}
 
       <div className="contact-section-two-columns">
-        {/* Columna izquierda: Información de contacto */}
         <div className="contact-info-left">
           <h2>¡Contactanos!</h2>
           <p>
@@ -262,7 +260,6 @@ const ContactForm = () => {
           </div>
         </div>
 
-        {/* Columna derecha: Formulario */}
         <form ref={form} onSubmit={sendEmail} className="contact-form-right">
           <label>Primer Nombre *</label>
           <input

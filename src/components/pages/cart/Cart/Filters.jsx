@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useFilters } from "../../../../hooks/useFilters.js";
-import { getBrands } from "../../../../api/brandsApi.js";
+import { getBrands } from "../../../../api/brands.js/";
 
 export default function Filters() {
   const { filters, setFilters } = useFilters();
@@ -15,7 +15,6 @@ export default function Filters() {
 
   return (
     <section className="filters-box">
-      {/* Marca */}
       <label className="filter-label">
         Marca:
         <select

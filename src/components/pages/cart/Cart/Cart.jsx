@@ -3,7 +3,7 @@ import { useCart } from "../../../../store.js";
 import { useFilters } from "../../../../hooks/useFilters.js";
 import { toast, ToastContainer } from "react-toastify";
 
-//incremente el stock del producto al eliminarlo del carrito
+
 import { useQueryClient } from "@tanstack/react-query";
 
 export default function Cart() {
@@ -25,13 +25,13 @@ export default function Cart() {
     0
   );
 
-  // Para actualizar el stock de los productos al eliminar del carrito
+ 
   const queryClient = useQueryClient();
 
   return (
 
     <div className="cart">
-      <h3 className="cart-title">Cart:</h3>
+      <h3 className="cart-title">Carrito:</h3>
       <ul className="cart-list">
         {filteredCart.map((item) => (
           <li key={item.id + item.title} className="cart-item">

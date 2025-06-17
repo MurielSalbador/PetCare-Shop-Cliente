@@ -1,7 +1,6 @@
 // components/ProtectedRoute.jsx
 
 
-//no ingresen manualmente a /addProducts
 import { Navigate } from "react-router-dom";
 import { isAdminOrSuperAdmin } from "../../utils/auth.js";
 

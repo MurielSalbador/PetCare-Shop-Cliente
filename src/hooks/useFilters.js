@@ -14,7 +14,7 @@ export function useFilters() {
       );
     });
 
-    // 👇 Agrega el ordenamiento por precio
+    //  Agrega el ordenamiento por precio
     if (filters.sortByPrice === "asc") {
       filtered.sort((a, b) => a.price - b.price);
     } else if (filters.sortByPrice === "desc") {

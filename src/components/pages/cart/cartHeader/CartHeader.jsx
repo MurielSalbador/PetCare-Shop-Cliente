@@ -3,14 +3,14 @@ import { FiltersProvider } from "../../../../context/filters.jsx";
 import { Link } from "react-router-dom";
 import CloseButton from "react-bootstrap/CloseButton";
 import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";  //boton cerrar
+import { useLocation } from "react-router-dom";
 import styles from "./CartHeader.module.css"; 
 
 const CartHeader = () => {
   const navigate = useNavigate();
 
 
-  //boton cerrar redirijir home/shop
+  //boton cerrar redirigir home/shop
   const location = useLocation();
   const from =
     location.state?.from || localStorage.getItem("fromPage") || "home";

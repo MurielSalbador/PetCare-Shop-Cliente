@@ -144,7 +144,7 @@ const addToCart = (product) => {
     }
      if (!user) {
       alert("Debés iniciar sesión para confirmar la compra.");
-      // 👉 Guardás que viene desde el intento de compra
+      
       localStorage.setItem("redirectAfterLogin", "/finish");
       navigate("/login");
       return;
@@ -318,14 +318,14 @@ const addToCart = (product) => {
                   type="button"
                   onClick={() => {
                     const { name, city, address } = formData;
-                    // Antes del POST al backend
+                    
                     const newOrder = {
                       name,
                       city,
                       address,
                       items: cart,
                       total: total.toFixed(2),
-                      date: new Date().toLocaleString(), // <- agregar esto
+                      date: new Date().toLocaleString(),
                     };
 
                     const message = `🛒 *Nuevo Pedido Realizado* por *${

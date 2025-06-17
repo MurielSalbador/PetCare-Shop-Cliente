@@ -5,7 +5,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 
 const FaqQuestions = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const navigate = useNavigate(); // <--- ESTO FALTABA
+  const navigate = useNavigate();
 
   const faqSections = [
     {

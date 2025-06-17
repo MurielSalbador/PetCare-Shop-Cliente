@@ -42,6 +42,7 @@
 ## 📦 Instalación de dependencias
 
 ```bash
+
 npm install
 npm install react-bootstrap bootstrap
 npm install react-router-dom

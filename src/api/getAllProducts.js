@@ -5,7 +5,7 @@ export async function getAllProducts(filters = {}) {
 
   if (filters.brand && filters.brand !== "all") {
     query.append("brand", filters.brand);
-  }
+  } 
 
   if (filters.category && filters.category !== "all") {
     query.append("category", filters.category);

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-import { Trash } from "react-bootstrap-icons"; // importamos el icono
+import { Trash } from "react-bootstrap-icons";
 import CloseButton from "react-bootstrap/CloseButton";
 import styles from "./Orders.module.css";
 
@@ -29,7 +29,7 @@ const Orders = () => {
     return;
   }
 
-  setUser(parsedUser); // sólo después de pasar validaciones
+  setUser(parsedUser); 
 
   const token = localStorage.getItem("token");
 
@@ -161,7 +161,7 @@ const Orders = () => {
             </button>
           )}
 
-          {/* Mostrar botón de borrar solo si el pedido está completado y el usuario es superAdmin */}
+         
           {order.status === "Completado" && user?.role === "superAdmin" && (
             <button
               className={styles.trashButton}

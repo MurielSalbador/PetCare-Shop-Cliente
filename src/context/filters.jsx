@@ -8,7 +8,7 @@ export function FiltersProvider({ children }) {
     category: "all",
     brand: "all",
     minPrice: 0,
-    maxPrice: 20000, // o valor máximo que quieras
+    maxPrice: 20000,
     sortByPrice: "", // "" | "asc" | "desc"
   });
 

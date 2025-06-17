@@ -32,7 +32,7 @@ function ProductList() {
   if (!confirm) return;
 
   try {
-    const token = localStorage.getItem("token"); // Asegurate que esté bien guardado tras login
+    const token = localStorage.getItem("token");
 
     await axios.delete(`http://localhost:3000/api/products/${id}`, {
       headers: {
@@ -41,7 +41,7 @@ function ProductList() {
     });
 
     toast.success("✅ Producto eliminado");
-    fetchProducts(); // Recarga productos
+    fetchProducts();
   } catch (err) {
     console.error("Error al eliminar:", err);
     toast.error("❌ No se pudo eliminar el producto");

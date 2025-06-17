@@ -1,13 +1,12 @@
 
 import useProductNavigation from "../../../../hooks/useProductNavigation/useProductNavigation.js";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { getAllProducts } from "../../../../api/fakeStoreApi.js";
+import { getAllProducts } from "../../../../api/getAllProducts.js";
 import { useCart } from "../../../../store.js";
 import { useFilters } from "../../../../hooks/useFilters.js";
 import "./ProductList.css";
 
 export default function ProductList() {
-  // 👇 todos los hooks al principio
   const { filters } = useFilters();
   const { goToProductDetail } = useProductNavigation();
   const addCart = useCart((state) => state.addCart);
@@ -22,7 +21,7 @@ export default function ProductList() {
     queryFn: () => getAllProducts(filters),
   });
 
-  // 👇 lógica después
+
   if (isLoading) return <p>Cargando productos...</p>;
   if (error) return <p>Error cargando productos</p>;
 
@@ -30,7 +29,6 @@ export default function ProductList() {
     <div className="product-grid">
       {products.map((product) => (
         <div key={product.id} className="product-card">
-          {/* 🔹 Imagen del producto */}
           <img src={product.imageUrl} alt={product.title} />
           <h3 className="product-title">
             {product.title.length > 20
@@ -71,7 +69,6 @@ export default function ProductList() {
                 </button>
               )}
 
-              {/* 🔹 Nuevo botón "Ver más" */}
               <button onClick={() => goToProductDetail(product.id)}>
                 Ver más
               </button>

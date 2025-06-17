@@ -30,7 +30,6 @@ const PasswordReset = () => {
       return; // no enviar si inválido
     }
 
-    // Aquí podrías llamar al backend con axios para enviar el mail
     axios
       .post("http://localhost:3000/api/password/forgot-password", { email })
       .then(() => {
@@ -89,7 +88,7 @@ const PasswordReset = () => {
   const isInvalidFormat = validated && email.trim() && !emailRegex.test(email);
 
   if (!token) {
-    // FORMULARIO para solicitar mail (primer componente)
+    // FORMULARIO para solicitar mail
     return (
       <div className="password-reset__page">
         <form
@@ -175,7 +174,7 @@ const PasswordReset = () => {
     );
   }
 
-  // FORMULARIO para cambiar contraseña (segundo componente)
+  // FORMULARIO para cambiar contraseña
   return (
     <div className="reset-password-container">
       <h2>Restablecer contraseña</h2>

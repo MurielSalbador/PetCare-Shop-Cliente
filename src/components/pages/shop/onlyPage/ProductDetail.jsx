@@ -1,18 +1,12 @@
 import { useParams } from 'react-router-dom';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { getProductById } from '../../../../api/fakeStoreApi.js';
+import { getProductById } from '../../../../api/getAllProducts.js';
 
 import './ProductDetail.css';
 
 import { useCart } from "../../../../store.js";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-//account
-import AccountButton from "../../income/account/AccountButton.jsx";
-
-//protected
-import { isAdminOrSuperAdmin } from "../../../../utils/auth.js";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -69,10 +63,6 @@ export default function ProductDetail() {
 
   return (
     <>
-      <header className="main-header">
-        {/* ... código del header ... */}
-      </header>
-
       <div className="product-detail" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200">
         <img src={product.imageUrl} alt={product.title} />
         <div className="info">
@@ -109,7 +99,6 @@ export default function ProductDetail() {
         </div>
       </div>
 
-      {/* Notificaciones de toast */}
       <ToastContainer />
     </>
   );

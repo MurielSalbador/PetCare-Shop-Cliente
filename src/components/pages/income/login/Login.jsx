@@ -45,9 +45,9 @@ function Login() {
         });
 
         const redirectPath = localStorage.getItem("redirectAfterLogin");
-        localStorage.removeItem("redirectAfterLogin"); // limpiás la redirección
+        localStorage.removeItem("redirectAfterLogin");
 
-        // 🚨 ACA CAMBIAMOS: si venía de finishcart, lo mandamos a reloadredirect
+    
         if (redirectPath === "/finish") {
           localStorage.setItem("shouldRedirectToHome", "true");
           navigate("/reloadredirect");

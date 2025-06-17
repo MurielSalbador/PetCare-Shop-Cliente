@@ -26,7 +26,7 @@ export const useCart = create(
                 ),
               };
             } else {
-              // Podés mostrar un alert acá o manejarlo fuera de la store
+
               alert(
                 "¡Has alcanzado el stock máximo disponible para este producto!"
               );
@@ -34,7 +34,7 @@ export const useCart = create(
             }
           }
 
-          // Si no existe, agregamos el producto con quantity 1
+
           return {
             count: state.count + 1,
             cart: [...state.cart, { ...item, quantity: 1 }],

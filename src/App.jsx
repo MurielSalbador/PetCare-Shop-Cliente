@@ -55,8 +55,6 @@ import ReloadRedirect from './components/pages/redirectOnPage/ReloadRedirect.jsx
 //notFound
 import PageNotFound from './components/pages/notFound/PageNotFound.jsx';
 
-//css
-import "./App.css";
 
 //aos
 import AOS from 'aos';
