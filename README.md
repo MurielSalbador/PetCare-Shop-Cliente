@@ -53,3 +53,7 @@ npm install @tanstack/react-query
 npm i axios
 npm i @emailjs/browser
 npm install @fortawesome/fontawesome-free
+
+```bash - para descargar todo con una linea "MAS DIRECTO"
+npm install react-bootstrap bootstrap react-router-dom react-icons react-toastify zustand@latest @tanstack/react-query axios @emailjs/browser @fortawesome/fontawesome-free
+npm audit fix
