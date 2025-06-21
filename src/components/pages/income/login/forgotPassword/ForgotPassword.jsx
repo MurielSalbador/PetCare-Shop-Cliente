@@ -55,8 +55,11 @@ const ForgotPassword = () => {
   const isInvalidFormat = validated && email.trim() && !emailRegex.test(email);
 
   return (
-    <div className="forgot-password-container">
-      <form onSubmit={handleSubmit} className="forgot-password-form" noValidate>
+    <div className="forgot-password-container" >
+      <form onSubmit={handleSubmit} className="forgot-password-form" noValidate
+              data-aos="zoom-in"
+              data-aos-duration="500"
+              data-aos-delay="200">
         <h2>¿Olvidaste tu contraseña?</h2>
         <p>Ingresá tu correo y te enviaremos un enlace para restablecerla.</p>
 
@@ -84,6 +87,13 @@ const ForgotPassword = () => {
 
         <button type="submit" className="forgot-password-button">
           Enviar enlace
+        </button>
+        <button
+          type="button"
+          className="forgot-password-button"
+          onClick={() => navigate("/login")}
+        >
+          Volver
         </button>
       </form>
 
